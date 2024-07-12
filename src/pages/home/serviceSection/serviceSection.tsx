@@ -1,61 +1,66 @@
+import SectionHeading from "@/components/shared/SectionHeading";
 import Aos from "aos";
-import {
-  CiBadgeDollar,
-  CiCreditCard2,
-  CiDeliveryTruck,
-} from "react-icons/ci";
+import { CiBadgeDollar, CiCreditCard2, CiDeliveryTruck } from "react-icons/ci";
 import { GoCheckbox } from "react-icons/go";
 import { PiHeadset } from "react-icons/pi";
 
-Aos.init()
+Aos.init();
 const ServiceSection = () => {
   return (
-    <section className="p-20 flex justify-between">
-      <div data-aos="" className="collage gap-6 grid font-medium grid-cols-2">
+    <section className="md:p-20 md:gap-8 items-center overflow-hidden p-10 flex md:flex-row flex-col justify-between">
+      <SectionHeading mode="dark" text="What We Offer" hideInSm={false} animateFrom="right"></SectionHeading>
+      <div
+        data-aos=""
+        className="collage gap-4 md:gap-6 grid font-medium grid-cols-2 "
+      >
         <div
-        data-aos="zoom-out"
-          className="p-6 w-48 flex flex-col items-center text-center justify-center aspect-square rounded-md bg-blue-300
+          data-aos="zoom-out"
+          className="p-6 flex flex-col items-center text-center justify-center col-span-1 row-span-1 aspect-square rounded-md bg-blue-300
         text-blue-900"
         >
-          <CiDeliveryTruck className="text-[6rem]"></CiDeliveryTruck>
-          <span>Fast and Secure Shipping</span>
+          <CiDeliveryTruck className="text-[3rem] md:text-[6rem]"></CiDeliveryTruck>
+          <span className="md:text-sm text-xs">Fast and Secure Shipping</span>
         </div>
         <div
-        data-aos="zoom-out"
-          className="p-4 w-48 flex flex-col items-center text-center justify-center aspect-square rounded-md bg-green-300
+          data-aos="zoom-out"
+          className="p-4 flex flex-col items-center text-center justify-center aspect-square rounded-md bg-green-300
         text-green-900"
         >
-          <PiHeadset className="text-[6rem] mb-2"></PiHeadset>
+          <PiHeadset className="text-[3rem] mb-4 md:text-[6rem]"></PiHeadset>
 
-          <span>24/7 Customer Support</span>
+          <span className="md:text-sm text-xs">24/7 Customer Support</span>
         </div>
         <div
-        data-aos="zoom-out"
-          className="p-4 w-48 flex flex-col items-center text-center justify-center aspect-square rounded-md bg-pink-300
+          data-aos="zoom-out"
+          className="p-4 col-span-1 row-span-1 flex flex-col items-center text-center justify-center aspect-square rounded-md bg-pink-300
         text-pink-900"
         >
-          <CiCreditCard2 className="text-[6rem] mb-2"></CiCreditCard2>
-          <span>Secure Payment Options</span>
+          <CiCreditCard2 className="text-[3rem] md:text-[6rem] mb-2"></CiCreditCard2>
+          <span className="md:text-sm text-xs">Secure Payment Options</span>
         </div>
-        <div 
-        data-aos="zoom-out"
-        className="p-4 w-48 flex flex-col items-center text-center justify-center aspect-square rounded-md bg-yellow-300 text-yellow-900">
-          <CiBadgeDollar className="text-[6rem] mb-2"></CiBadgeDollar>
-          <span>Special Offers and Promotions</span>
+        <div
+          data-aos="zoom-out"
+          className="p-4 flex flex-col items-center text-center justify-center aspect-square rounded-md bg-yellow-300 text-yellow-900"
+        >
+          <CiBadgeDollar className="text-[3rem] md:text-[6rem] mb-2"></CiBadgeDollar>
+          <span className="md:text-sm text-xs">
+            Special Offers and Promotions
+          </span>
         </div>
       </div>
 
-      <div 
-          data-aos-offset="100"
-      data-aos="fade-left"
-      data-aos-animation-duration="10000"
-      data-aos-easing="ease-in-out"
-      data-aos-once="false"
-      data-aos-delay="100"
-      className="flex flex-col w-1/2">
-        <h2 className="font-bold text-6xl mb-6 text-primary">What We Offer</h2>
+      <div className="flex flex-col w-full md:w-1/2">
+        <SectionHeading text={"What We Offer"} mode="dark"></SectionHeading>
         <ul className="flex flex-col gap-4">
-          <li className="flex flex-col">
+          <li
+            data-aos-offset="100"
+            data-aos="fade-left"
+            data-aos-animation-duration="10000"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            data-aos-delay="100"
+            className="flex flex-col mt-4"
+          >
             <div className="flex gap-2 items-center text-lg">
               <GoCheckbox className=""></GoCheckbox>
               <span className="font-medium">24/7 Customer Support</span>
@@ -65,7 +70,15 @@ const ServiceSection = () => {
               to assist you with any inquiries or issues.
             </p>
           </li>
-          <li className="flex flex-col">
+          <li
+            data-aos-offset="100"
+            data-aos="fade-left"
+            data-aos-animation-duration="10000"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            data-aos-delay="100"
+            className="flex flex-col"
+          >
             <div className="flex gap-2 items-center text-lg">
               <GoCheckbox className=""></GoCheckbox>
               <span className="font-medium">Special Offers and Promotions</span>
@@ -75,7 +88,15 @@ const ServiceSection = () => {
               top-rated mechanical keyboards and accessories.
             </p>
           </li>
-          <li className="flex flex-col">
+          <li
+            data-aos-offset="100"
+            data-aos="fade-left"
+            data-aos-animation-duration="10000"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            data-aos-delay="100"
+            className="flex flex-col"
+          >
             <div className="flex gap-2 items-center text-lg">
               <GoCheckbox className=""></GoCheckbox>
               <span className="font-medium">Secure Payment Options</span>
@@ -85,7 +106,15 @@ const ServiceSection = () => {
               your transactions are safe and protected.
             </p>
           </li>
-          <li className="flex flex-col">
+          <li
+            data-aos-offset="100"
+            data-aos="fade-left"
+            data-aos-animation-duration="10000"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+            data-aos-delay="100"
+            className="flex flex-col"
+          >
             <div className="flex gap-2 items-center text-lg">
               <GoCheckbox className=""></GoCheckbox>
               <span className="font-medium">Fast and Secure Shipping</span>
