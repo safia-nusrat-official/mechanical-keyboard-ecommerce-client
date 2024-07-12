@@ -18,21 +18,22 @@ const FeaturedProductsSection = () => {
   );
   const products: IProduct[] = isSuccess && data.data;
   return (
-    <section className="overflow:hidden bg-red-400  h-[2390px] md:h-[1000px] relative">
-      <div className="section-bg-image h-full relative overflow:hidden ">
+    <section className="overflow-hidden h-[2380px] md:h-[1000px] relative">
+      <div className="section-bg-image h-full relative overflow-hidden ">
         <img src={sectionBg} alt="" className="w-full h-full" />
       </div>
       <div className="section-contents w-full text-center absolute p-8 md:p-20 top-1">
         <SectionHeading
           text={"Top Picks for Enthusiasts"}
           mode="light"
-          hideInSm={false}
+          hideInSm="both"
           animateFrom="right"
         ></SectionHeading>
         <p
-        data-aos="fade-right"
-        data-aos-delay="200"
-        className="font-[500] text-white text-lg mb-10">
+          data-aos="fade-right"
+          data-aos-delay="200"
+          className="font-[500] text-white text-lg mb-10"
+        >
           Explore our top-selling keyboards that customers love.
         </p>
         {/* <Swiper
@@ -60,7 +61,7 @@ const FeaturedProductsSection = () => {
               <ProductCard data={product} key={product._id}></ProductCard>
             ))}
         </div>
-        <div className="overlay absolute left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-custom-primary to-transparent"></div>
+        <div className="overlay absolute left-0 bottom-0 w-full h-full bg-gradient-to-t from-custom-primary to-transparent"></div>
         <Link to="/products">
           <CustomButton text={"Browse All Products"}></CustomButton>
         </Link>

@@ -1,0 +1,74 @@
+[
+  {
+    "name": "John Doe",
+    "rating": 4.9,
+    "email": "john.doe@example.com",
+    "title": "Excellent Customer Service",
+    "image": "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg",
+    "description": "I had an issue with my order, but the customer service team resolved it quickly and efficiently. They were friendly and professional throughout the entire process. Will definitely shop here again."
+  },
+  {
+    "name": "Maria Gonzalez",
+    "rating": 4.7,
+    "email": "maria.gonzalez@example.com",
+    "title": "Fast Shipping and Great Prices",
+    "image": "https://cdn2.psychologytoday.com/assets/styles/manual_crop_1_91_1_1528x800/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=7lrLYx-B",
+    "description": "I was pleasantly surprised by how quickly my order arrived. The prices are also very competitive. I will be recommending this store to all my friends who are into mechanical keyboards."
+  },
+  {
+    "name": "Liam Brown",
+    "rating": 4.6,
+    "email": "liam.brown@example.com",
+    "title": "Highly Customizable Keyboards",
+    "image": "https://st2.depositphotos.com/2931363/6569/i/450/depositphotos_65699901-stock-photo-black-man-keeping-arms-crossed.jpg",
+    "description": "I love how customizable the keyboards are. I was able to choose my preferred switches and keycaps, and the result is a keyboard that feels uniquely mine. Great experience overall!"
+  },
+  {
+    "name": "Emma Smith",
+    "rating": 4.9,
+    "email": "emma.smith@example.com",
+    "title": "A Pleasure to Type On",
+    "image": "https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg",
+    "description": "This keyboard makes typing a joy. The keys are responsive, and the sound is satisfying. It's perfect for both work and gaming. I'm very happy with my purchase."
+  },
+  {
+    "name": "Noah Johnson",
+    "rating": 4.8,
+    "email": "noah.johnson@example.com",
+    "title": "Great Value for Money",
+    "image": "https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg",
+    "description": "I was looking for a high-quality mechanical keyboard without breaking the bank, and I found it here. The value for money is excellent, and the keyboard performs beautifully."
+  },
+  {
+    "name": "Sophia Lee",
+    "rating": 4.7,
+    "email": "sophia.lee@example.com",
+    "title": "Sleek and Stylish Design",
+    "image": "https://as2.ftcdn.net/v2/jpg/03/39/19/17/1000_F_339191756_FBt833eUo564fATdlTG2SVItv5S35TYB.jpg",
+    "description": "Not only is the keyboard functional, but it also looks great on my desk. The design is sleek and stylish, adding a modern touch to my setup. Love it!"
+  },
+  {
+    "name": "Mason Williams",
+    "rating": 4.9,
+    "email": "mason.williams@example.com",
+    "title": "Superb Typing Experience",
+    "image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+    "description": "The typing experience with this keyboard is superb. The tactile feedback is just right, and the keys are perfectly spaced. It's a dream to type on."
+  },
+  {
+    "name": "Isabella Martinez",
+    "rating": 4.8,
+    "email": "isabella.martinez@example.com",
+    "title": "Highly Recommended",
+    "image": "https://img.freepik.com/free-photo/happiness-wellbeing-confidence-concept-cheerful-attractive-african-american-woman-curly-haircut-cross-arms-chest-self-assured-powerful-pose-smiling-determined-wear-yellow-sweater_176420-35063.jpg",
+    "description": "I would highly recommend this store to anyone looking for a mechanical keyboard. The selection is great, the prices are fair, and the customer service is excellent."
+  },
+  {
+    "name": "Ethan Davis",
+    "rating": 5.0,
+    "email": "ethan.davis@example.com",
+    "title": "Best Purchase Ever!",
+    "image": "https://t3.ftcdn.net/jpg/03/02/88/46/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg",
+    "description": "This is hands down the best purchase I've ever made for my computer setup. The keyboard is of exceptional quality, and the shopping experience was seamless. Five stars!"
+  }
+]
