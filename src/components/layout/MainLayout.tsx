@@ -1,8 +1,8 @@
 import { Divider, Layout, Menu } from "antd";
 import { useState } from "react";
 import { FaBars, FaCartShopping } from "react-icons/fa6";
-import { NavLink, Outlet } from "react-router-dom";
-
+import { Link, NavLink, Outlet } from "react-router-dom";
+import "./layout.css";
 const { Content, Header, Footer, Sider } = Layout;
 
 const MainLayout = () => {
@@ -34,7 +34,7 @@ const MainLayout = () => {
     <Layout>
       <Header
         style={{
-          backgroundColor: "#001F3F",
+          backgroundColor: "#fefefe",
           position: "sticky",
           top: 0,
           zIndex: 1,
@@ -42,7 +42,7 @@ const MainLayout = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          color: "#fefefe",
+          color: "#001F3F",
           fontFamily: "Untitled Sans",
         }}
       >
@@ -52,20 +52,19 @@ const MainLayout = () => {
         >
           <FaBars></FaBars>
         </button>
-        <div className="demo-logo font-[600] md:text-[2rem] text-[1.5rem]">
+        <Link to="/" className="demo-logo font-[600] md:text-[2rem] text-[1.5rem]">
           KeyWizards
-        </div>
+        </Link>
         <Menu
-          className="hidden md:flex"
-          theme="dark"
+          className="hidden md:flex .nav-menu"
           mode="horizontal"
-          defaultSelectedKeys={["home"]}
+          defaultSelectedKeys={["Home"]}
           items={sideBarItems}
           style={{
             marginLeft: "6rem",
             fontWeight: "600",
             fontSize: "1rem",
-            backgroundColor: "#001F3F",
+            background: "transparent",
             flex: 1,
             minWidth: 0,
           }}
@@ -100,11 +99,15 @@ const MainLayout = () => {
           <Menu
             theme="dark"
             mode="inline"
-            defaultSelectedKeys={["4"]}
+            defaultSelectedKeys={["Home"]}
             items={sideBarItems}
+            style={{
+              paddingLeft: "14px",
+              paddingRight: "14px",
+            }}
           />
         </Sider>
-        <Content style={{ margin: "24px 16px 0" }}>
+        <Content>
           <Outlet></Outlet>
         </Content>
       </Layout>

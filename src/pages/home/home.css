@@ -1,0 +1,35 @@
+.typing-effect {
+  border-right: 2px solid #fff;
+  padding-right: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
+}
+
+.hero-text {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-text.fade-in {
+  opacity: 1;
+}
+
+.gradient-text-container{
+  background-image: url("../../assets/images/mechanical\ keyboard.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
