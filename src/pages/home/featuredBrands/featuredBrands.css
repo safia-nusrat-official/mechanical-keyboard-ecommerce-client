@@ -1,12 +1,15 @@
-.text {
-  animation: animate_text 30s linear infinite;
+.logo {
+  animation: scroll 50s linear infinite;
 }
 
-@keyframes animate_text {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-100%, 0, 0);
-  }
+.slide-track {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 3em;
+  overflow: hidden;
+}
+@keyframes scroll {
+  0% {transform: translateX(0);}
+  100% {transform: translatex(-1000%)}
 }

@@ -2,9 +2,10 @@ import "./home.css";
 import HeroSection from "./heroSection/HeroSection";
 import ServiceSection from "./serviceSection/serviceSection";
 import FeaturedProductsSection from "./featuredProducts.tsx/featuredProductsSection";
-import FeaturedBrandsSection from "./featuredBrands/featuredBrands";
+import FeaturedBrandsSection from "./featuredBrands/featuredBrandsSection";
 import ReviewsSection from "./reviewsSection/reviewsSection";
 import WhyChooseSection from "./whyChooseSection";
+import CustomizableOptionsSection from "./customizableOptionsSection";
 
 const Home = () => {
   return (
@@ -15,8 +16,7 @@ const Home = () => {
       <FeaturedBrandsSection></FeaturedBrandsSection>
       <ReviewsSection></ReviewsSection>
       <WhyChooseSection></WhyChooseSection>
-      
-      
+      <CustomizableOptionsSection></CustomizableOptionsSection>
     </main>
   );
 };

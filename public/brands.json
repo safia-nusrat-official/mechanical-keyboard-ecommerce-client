@@ -1,34 +1,42 @@
 [
   {
     "name": "ErgoTech",
-    "logo": "https://cdn.vectorstock.com/i/1000v/45/72/pc-gaming-round-emblem-with-keyboard-vector-27924572.jpg"
+    "logo": "./brand-logo-4.png"
   },
   {
     "name": "ValueKey",
-    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkY4ZFWxWawS_grLGfV8BhWBlrwQOXefv7mQ&s"
+    "logo": "./brand-logo-9.png"
   },
   {
-    "name": "WoodType"
+    "name": "WoodType",
+    "logo": "./brand-logo-3.png"
   },
   {
-    "name": "SilenceMaster"
+    "name": "SilenceMaster",
+    "logo": "./brand-logo-8.png"
   },
   {
-    "name": "BuildYourBoard"
+    "name": "BuildYourBoard",
+    "logo": "./brand-logo-7.png"
   },
   {
-    "name": "MiniType"
+    "name": "MiniType",
+    "logo": "./brand-logo-2.png"
   },
   {
-    "name": "GamerTech"
+    "name": "GamerTech",
+    "logo": "./brand-logo-1.png"
   },
   {
-    "name": "TypistPro"
+    "name": "TypistPro",
+    "logo": "./brand-logo-10.png"
   },
   {
-    "name": "LightFX"
+    "name": "LightFX",
+    "logo": "./brand-logo-6.png"
   },
   {
-    "name": "FreeType"
+    "name": "FreeType",
+    "logo": "./brand-logo-5.png"
   }
 ]

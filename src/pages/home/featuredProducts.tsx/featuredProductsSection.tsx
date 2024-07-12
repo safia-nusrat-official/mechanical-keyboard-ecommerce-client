@@ -18,7 +18,7 @@ const FeaturedProductsSection = () => {
   );
   const products: IProduct[] = isSuccess && data.data;
   return (
-    <section className="overflow-hidden h-[2380px] md:h-[1000px] relative">
+    <section className="overflow-hidden h-[3200px] md:h-[1165px] bg-red-400 relative">
       <div className="section-bg-image h-full relative overflow-hidden ">
         <img src={sectionBg} alt="" className="w-full h-full" />
       </div>
@@ -61,7 +61,7 @@ const FeaturedProductsSection = () => {
               <ProductCard data={product} key={product._id}></ProductCard>
             ))}
         </div>
-        <div className="overlay absolute left-0 bottom-0 w-full h-full bg-gradient-to-t from-custom-primary to-transparent"></div>
+        <div className="overlay absolute bottom-0 left-0 w-full md:h-1/3 bg-gradient-to-t from-custom-primary to-transparent"></div>
         <Link to="/products">
           <CustomButton text={"Browse All Products"}></CustomButton>
         </Link>
