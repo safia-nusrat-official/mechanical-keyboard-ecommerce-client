@@ -43,8 +43,9 @@ const MainLayout = () => {
           alignItems: "center",
           justifyContent: "space-between",
           color: "#001F3F",
-          fontFamily: "Untitled Sans",
+          fontFamily: "Untitled Sans"
         }}
+        className="border-[0.5px] border-zinc-200"
       >
         <button
           className="mr-4 text-2xl md:hidden block"

@@ -1,10 +1,12 @@
 import "./home.css"
 import HeroSection from "./heroSection/HeroSection";
+import ServiceSection from "./serviceSection/serviceSection";
 
 const Home = () => {
   return (
-    <main>
+    <main style={{ fontFamily: "Untitled Sans" }}>
       <HeroSection></HeroSection>
+      <ServiceSection></ServiceSection>
     </main>
   );
 };

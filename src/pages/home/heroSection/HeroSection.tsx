@@ -11,7 +11,6 @@ const HeroSection = () => {
   return (
     <section
       className="hero-section relative max-h-[580px] overflow-hidden text-[#fefefe]"
-      style={{ fontFamily: "Untitled Sans" }}
     >
       <div className="hero-image-container relative overflow-hidden object-contain">
         <div className="overlay absolute bg-[#00000048] backdrop-blur-[2px] z-1 h-full w-full"></div>
