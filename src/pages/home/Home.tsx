@@ -4,6 +4,7 @@ import ServiceSection from "./serviceSection/serviceSection";
 import FeaturedProductsSection from "./featuredProducts.tsx/featuredProductsSection";
 import FeaturedBrandsSection from "./featuredBrands/featuredBrands";
 import ReviewsSection from "./reviewsSection/reviewsSection";
+import WhyChooseSection from "./whyChooseSection";
 
 const Home = () => {
   return (
@@ -13,6 +14,9 @@ const Home = () => {
       <FeaturedProductsSection></FeaturedProductsSection>
       <FeaturedBrandsSection></FeaturedBrandsSection>
       <ReviewsSection></ReviewsSection>
+      <WhyChooseSection></WhyChooseSection>
+      
+      
     </main>
   );
 };
