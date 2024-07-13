@@ -1,18 +1,20 @@
 // @ts-nocheck
 
 import { baseApi } from "./baseApi";
+type TRequestParams = {
+  limit?: number;
+  sort?: string;
+  page?: number;
+  searchTerm?: string;
+  fields?: string;
+  filter?: string;
+};
 
 const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: (params: {
-        limit?: number;
-        sort?: string;
-        page?: number;
-        searchTerm?: string;
-        fields?: string;
-        filter?: string;
-      }) => {
+      query: (params: TRequestParams) => {
+        console.log(params);
         return {
           url: `/products`,
           method: "GET",

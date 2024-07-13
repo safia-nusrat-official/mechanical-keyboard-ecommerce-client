@@ -1,3 +1,4 @@
+import { Toaster } from "sonner";
 import MainLayout from "./components/layout/MainLayout";
 
 const App = () => {

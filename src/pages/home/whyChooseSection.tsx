@@ -20,7 +20,7 @@ const whyChooseSection = () => {
           Your browser does not support the video tag.
         </video>
         <div className="overlay top-4 relative font-[600] text-4xl md:mt-0  md:text-6xl mb-6 text-center mix-blend-screen z-[4] text-black ">
-          <h2 className="md:p-8 pb-10 bg-[#fefefe]">
+          <h2 className="md:p-8 py-10 bg-[#fefefe]">
             Why Choose Mechanical Keyboards?
           </h2>
         </div>
@@ -31,7 +31,7 @@ const whyChooseSection = () => {
           <div className="flex relative items-center">
             <div
               className={`h-28 w-[1.5px] bg-zinc-700 ${
-                index === 0 ? "hidden" : "block"
+                index === 0 ? "md:hidden block" : "block"
               } mx-4`}
             ></div>
 

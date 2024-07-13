@@ -14,14 +14,17 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useState } from "react";
+import { Skeleton } from "antd";
+import { Toaster } from "sonner";
 
 const AllProducts = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const { data, isSuccess } = useGetProductsQuery({
+  const { data, isSuccess, isLoading } = useGetProductsQuery({
     limit: 6,
     page: 1,
     searchTerm,
   });
+
   const handleSearch: SearchProps["onSearch"] = (value: string) => {
     setSearchTerm(value);
   };
@@ -36,13 +39,15 @@ const AllProducts = () => {
           <SearchBar handleSearch={handleSearch}></SearchBar>
         </div>
         <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+          {
+            isLoading && <div><Skeleton active /></div>
+          }
           {isSuccess &&
             data?.data?.length &&
             data?.data.map((product: IProduct) => (
               <ProductCard data={product} key={product._id}></ProductCard>
             ))}
         </div>
-
         <div className="mt-8 text-white">
           <Pagination>
             <PaginationContent>

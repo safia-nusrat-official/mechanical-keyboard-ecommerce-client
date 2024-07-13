@@ -24,7 +24,7 @@ const FeaturedBrandsSection = () => {
         <div className="flex w-screen relative logo gap-8">
           {brands?.length &&
             brands.slice(0, 5).map((brand, index) => (
-              <div key={index} className="flex-none">
+              <div key={index} className="md:flex-none">
                 <img
                   src={brand.logo}
                   alt={brand.name}

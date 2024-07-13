@@ -1,5 +1,5 @@
-.custom-swiper .swiper-button-prev,
-.custom-swiper .swiper-button-next {
+.custom-swiper.swiper .swiper-button-prev,
+.custom-swiper.swiper .swiper-button-next {
   background-color: #ffffff26;
   top: 35%;
   transform: translateY(-35%);
@@ -19,6 +19,6 @@
   color: #fff;
 }
 
-.swiper-pagination .swiper-pagination-bullet {
+.custom-swiper .swiper-pagination .swiper-pagination-bullet {
   background-color: #fff;
 }

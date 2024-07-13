@@ -1,11 +1,16 @@
-import { Divider, Layout, Menu } from "antd";
+import { Badge, Divider, Layout, Menu } from "antd";
 import { useEffect, useState } from "react";
 import { FaBars, FaCartShopping } from "react-icons/fa6";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import "./layout.css";
+import { useAppSelector } from "@/redux/hook";
+import { getCartItems } from "@/redux/features/cart/cartSlice";
+import { Toaster } from "sonner";
 const { Content, Header, Footer, Sider } = Layout;
 
 const MainLayout = () => {
+  const { totalItems: totalCartItems } = useAppSelector(getCartItems);
+
   const location = useLocation();
   const sideBarItems = [
     {
@@ -95,8 +100,23 @@ const MainLayout = () => {
               alignItems: "center",
             }}
           >
-            <span className="mr-4 md:block hidden">Your Cart</span>
-            <FaCartShopping style={{ fontSize: "1.25rem" }} />
+            <span className="ml-4 md:block hidden">Your Cart</span>
+            <Badge
+              style={{
+                border: "1.5px solid #001f3f",
+                backgroundColor: "#fefefe",
+                color: "#001f3f",
+                fontFamily: "Untitled Sans",
+                fontWeight: "500",
+              }}
+              count={totalCartItems}
+              offset={[5, 2]}
+              showZero
+            >
+              <div className="bg-white p-[8px] rounded-md">
+                <FaCartShopping style={{ fontSize: "1.25rem" }} />{" "}
+              </div>
+            </Badge>
           </div>
         </NavLink>
       </Header>
@@ -125,6 +145,9 @@ const MainLayout = () => {
         </Sider>
         <Content>
           <Outlet></Outlet>
+          <div className="fixed bottom-0 h-screen right-0">
+            <Toaster duration={2000} visibleToasts={1} position={"bottom-right"}></Toaster>
+          </div>
         </Content>
       </Layout>
 

@@ -14,7 +14,11 @@ import { Link } from "react-router-dom";
 
 const FeaturedProductsSection = () => {
   const { data, isSuccess } = useGetProductsQuery(
-    "limit=6&page=1&fields=-description"
+    {
+      limit:6,
+      page:1,
+      fields:"-description"
+    }
   );
   const products: IProduct[] = isSuccess && data.data;
   return (
@@ -58,7 +62,7 @@ const FeaturedProductsSection = () => {
         <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
           {products.length &&
             products.map((product) => (
-              <ProductCard data={product} key={product._id}></ProductCard>
+              <ProductCard data={product} key={product._id} variant="md"></ProductCard>
             ))}
         </div>
         <div className="overlay absolute bottom-0 left-0 w-full md:h-1/3 bg-gradient-to-t from-custom-primary to-transparent"></div>
