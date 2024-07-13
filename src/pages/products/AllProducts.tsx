@@ -27,7 +27,7 @@ const AllProducts = () => {
   };
   return (
     <section
-      className="md:p-14 relative p-8 bg-fixed bg-center backdrop-blur-sm bg-cover bg-no-repeat"
+      className="md:p-14 relative overflow-hidden p-8 bg-fixed bg-center backdrop-blur-sm bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${gradientBg})` }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>

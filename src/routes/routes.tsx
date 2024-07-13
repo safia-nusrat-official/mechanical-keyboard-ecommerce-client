@@ -9,40 +9,40 @@ import Cart from "../pages/cart/Cart.tsx";
 import ProductDetails from "@/pages/products/ProductDetails.tsx";
 
 const router = createBrowserRouter([
-    {
-        element: <App/>,
-        path:"/",
-        children:[
-            {
-                path:"/",
-                element:<Home></Home>
-            },
-            {
-                path:"/about-us",
-                element:<AboutUs></AboutUs>
-            },
-            {
-                path:"/contact-us",
-                element:<ContactUs></ContactUs>
-            },
-            {
-                path:"/products",
-                element:<AllProducts></AllProducts>
-            },
-            {
-                path:"/products/:id",
-                element:<ProductDetails></ProductDetails>
-            },
-            {
-                path:"/cart",
-                element:<Cart></Cart>
-            },
-            {
-                path:"/dashboard",
-                element:<Dashboard></Dashboard>
-            },
-        ]
-    }
-])
+  {
+    element: <App />,
+    path: "/",
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs></ContactUs>,
+      },
+      {
+        path: "/products",
+        element: <AllProducts></AllProducts>,
+      },
+      {
+        path: "/products/:id",
+        element: <ProductDetails></ProductDetails>,
+      },
+      {
+        path: "/cart",
+        element: <Cart></Cart>,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+      },
+    ],
+  },
+]);
 
 export default router;

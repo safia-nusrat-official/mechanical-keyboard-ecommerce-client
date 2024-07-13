@@ -6,10 +6,10 @@ import "./layout.css";
 const { Content, Header, Footer, Sider } = Layout;
 
 const MainLayout = () => {
-  const location = useLocation()
+  const location = useLocation();
   const sideBarItems = [
     {
-      key: "Home",
+      key: "home",
       label: <NavLink to="/">Home</NavLink>,
     },
     {
@@ -29,15 +29,19 @@ const MainLayout = () => {
       label: <NavLink to={`/dashboard`}>Dashboard</NavLink>,
     },
   ];
-  const [selectedKeys, setSelectedKeys] = useState("/")
+  const [selectedKeys, setSelectedKeys] = useState("/");
   const [collapsed, setCollapsed] = useState(true);
 
-  useEffect(()=>{
-    console.log(location.pathname)
-    setSelectedKeys(location.pathname)
-  }, [location.pathname])
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setSelectedKeys("home");
+    } else if (
+      sideBarItems.find((item) => item.key === location.pathname.slice(1))
+    ) {
+      setSelectedKeys(location.pathname.slice(1));
+    }
+  }, [location.pathname]);
 
-  console.log([selectedKeys])
   return (
     <Layout>
       <Header
@@ -51,7 +55,7 @@ const MainLayout = () => {
           alignItems: "center",
           justifyContent: "space-between",
           color: "#001F3F",
-          fontFamily: "Untitled Sans"
+          fontFamily: "Untitled Sans",
         }}
         className="border-[0.5px] border-zinc-200"
       >
@@ -61,13 +65,16 @@ const MainLayout = () => {
         >
           <FaBars></FaBars>
         </button>
-        <Link to="/" className="demo-logo font-[600] md:text-[2rem] text-[1.5rem]">
+        <Link
+          to="/"
+          className="demo-logo font-[600] md:text-[2rem] text-[1.5rem]"
+        >
           KeyWizards
         </Link>
         <Menu
           className="hidden md:flex .nav-menu"
           mode="horizontal"
-          defaultSelectedKeys={["Home"]}
+          selectedKeys={[selectedKeys]}
           items={sideBarItems}
           style={{
             marginLeft: "6rem",

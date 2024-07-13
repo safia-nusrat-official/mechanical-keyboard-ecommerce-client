@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IProduct } from "../../../types";
 import { RootState } from "../../store";
 
@@ -8,10 +8,12 @@ const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    ADD_PRODUCT: () => {},
+    SET_PRODUCTS: (state, action: PayloadAction<IProduct[]>) => {
+      state = action.payload;
+    },
   },
 });
 
-export const {} = productsSlice.actions;
+export const { SET_PRODUCTS } = productsSlice.actions;
 export const GET_PRODUCTS = (state: RootState) => state.products;
 export default productsSlice.reducer;

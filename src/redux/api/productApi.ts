@@ -5,7 +5,14 @@ import { baseApi } from "./baseApi";
 const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: (params) => {
+      query: (params: {
+        limit?: number;
+        sort?: string;
+        page?: number;
+        searchTerm?: string;
+        fields?: string;
+        filter?: string;
+      }) => {
         return {
           url: `/products`,
           method: "GET",
@@ -26,4 +33,4 @@ const productsApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetProductsQuery } = productsApi;
+export const { useGetProductsQuery, useGetSingleProductQuery } = productsApi;
