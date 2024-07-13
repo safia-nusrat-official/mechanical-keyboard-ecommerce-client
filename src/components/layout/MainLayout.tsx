@@ -1,35 +1,43 @@
 import { Divider, Layout, Menu } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBars, FaCartShopping } from "react-icons/fa6";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import "./layout.css";
 const { Content, Header, Footer, Sider } = Layout;
 
 const MainLayout = () => {
+  const location = useLocation()
   const sideBarItems = [
     {
       key: "Home",
       label: <NavLink to="/">Home</NavLink>,
     },
     {
-      key: "Products",
+      key: "products",
       label: <NavLink to={`/products`}>Products</NavLink>,
     },
     {
-      key: "About Us",
+      key: "about-us",
       label: <NavLink to={`/about-us`}>About Us</NavLink>,
     },
     {
-      key: "Contact Us",
+      key: "contact-us",
       label: <NavLink to={`/contact-us`}>Contact Us</NavLink>,
     },
     {
-      key: "Dashboard",
+      key: "dashboard",
       label: <NavLink to={`/dashboard`}>Dashboard</NavLink>,
     },
   ];
-
+  const [selectedKeys, setSelectedKeys] = useState("/")
   const [collapsed, setCollapsed] = useState(true);
+
+  useEffect(()=>{
+    console.log(location.pathname)
+    setSelectedKeys(location.pathname)
+  }, [location.pathname])
+
+  console.log([selectedKeys])
   return (
     <Layout>
       <Header
@@ -100,7 +108,7 @@ const MainLayout = () => {
           <Menu
             theme="dark"
             mode="inline"
-            defaultSelectedKeys={["Home"]}
+            selectedKeys={[selectedKeys]}
             items={sideBarItems}
             style={{
               paddingLeft: "14px",

@@ -50,7 +50,7 @@ const ServiceSection = () => {
       </div>
 
       <div className="flex flex-col w-full md:w-1/2">
-        <SectionHeading text={"What We Offer"} mode="dark"></SectionHeading>
+        <SectionHeading text={"What We Offer"} mode="dark" animateFrom="left"></SectionHeading>
         <ul className="flex flex-col gap-4">
           <li
             data-aos-offset="100"
