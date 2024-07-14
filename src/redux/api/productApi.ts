@@ -12,6 +12,12 @@ type TRequestParams = {
 
 const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    getProductsCount: builder.query({
+      query: () => ({
+        url: `/products-count`,
+        method: "GET",
+      }),
+    }),
     getProducts: builder.query({
       query: (params: TRequestParams) => {
         console.log(params);
@@ -35,4 +41,8 @@ const productsApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetProductsQuery, useGetSingleProductQuery } = productsApi;
+export const {
+  useGetProductsQuery,
+  useGetSingleProductQuery,
+  useGetProductsCountQuery,
+} = productsApi;

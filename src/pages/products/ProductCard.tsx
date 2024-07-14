@@ -24,6 +24,10 @@ const ProductCard = ({
   const handleAddToCart = () => {
     if (orderedQuantity > availableQuantity) {
       toast.error("Insufficient Quantity");
+      return
+    } else if (!orderedQuantity) {
+      toast.error("0 Quantity Selected");
+      return;
     } else {
       const cartItem: ICart = {
         product: data,
@@ -111,7 +115,7 @@ const ProductCard = ({
       <h1 className="text-zinc-800 font-[700] font-Untitled-Sans text-4xl">
         {title}
       </h1>
-      <span className="font-[500] text-zinc-500 mt-2">{brand}</span>
+      <span className="font-[500] text-zinc-500 mt-2 mb-6">{brand}</span>
       <div className="mt-2 flex items-center gap-2 font-[500]">
         {rating}{" "}
         <Rate allowHalf disabled defaultValue={rating > 5 ? 5 : rating} />

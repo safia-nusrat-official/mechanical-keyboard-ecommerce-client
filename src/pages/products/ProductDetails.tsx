@@ -17,6 +17,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const ProductDetails = () => {
   const { id } = useParams();
+  console.log(id)
   const { data, isSuccess } = useGetSingleProductQuery(id as string);
 
   const { data: otherProducts } = useGetProductsQuery({

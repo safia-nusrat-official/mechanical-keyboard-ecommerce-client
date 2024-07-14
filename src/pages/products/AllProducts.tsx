@@ -1,9 +1,14 @@
 import type { SearchProps } from "antd/es/input/Search";
-import { useGetProductsQuery } from "@/redux/api/productApi";
+import {
+  useGetProductsCountQuery,
+  useGetProductsQuery,
+} from "@/redux/api/productApi";
 import { IProduct } from "@/types";
 import ProductCard from "./ProductCard";
 import SearchBar from "@/components/shared/search/SearchBar";
 import gradientBg from "../../assets/images/gradient-bg.jpg";
+import { useState } from "react";
+import { Skeleton } from "antd";
 import {
   Pagination,
   PaginationContent,
@@ -13,17 +18,45 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { useState } from "react";
-import { Skeleton } from "antd";
-import { Toaster } from "sonner";
+import { Card, CardContent } from "@/components/ui/card";
 
 const AllProducts = () => {
+  // pagination logic
+  const { data, isSuccess: productCountFetchSuccess } =
+    useGetProductsCountQuery(null);
+  const numberOfProducts: number = productCountFetchSuccess && data?.data;
+  const productsPerPage = 6;
+  const numberOfPages = Math.ceil(numberOfProducts / productsPerPage);
+  const [currentPage, setCurrentPage] = useState(1);
+  const paginationLinks = Array(numberOfPages)
+    .fill(0)
+    .map((item, index) => (
+      <PaginationItem>
+        <PaginationLink
+          className={`${currentPage === index + 1 && "text-black"}`}
+          isActive={currentPage === index + 1}
+          onClick={() => setCurrentPage(index + 1)}
+        >
+          {index + 1}
+        </PaginationLink>
+      </PaginationItem>
+    ));
+
   const [searchTerm, setSearchTerm] = useState("");
-  const { data, isSuccess, isLoading } = useGetProductsQuery({
-    limit: 6,
-    page: 1,
-    searchTerm,
-  });
+  const {
+    data: productData,
+    isSuccess,
+    isLoading,
+  } = useGetProductsQuery(
+    !searchTerm
+      ? {
+          limit: productsPerPage,
+          page: currentPage,
+        }
+      : {
+          searchTerm,
+        }
+  );
 
   const handleSearch: SearchProps["onSearch"] = (value: string) => {
     setSearchTerm(value);
@@ -39,12 +72,19 @@ const AllProducts = () => {
           <SearchBar handleSearch={handleSearch}></SearchBar>
         </div>
         <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
-          {
-            isLoading && <div><Skeleton active /></div>
-          }
+          {isLoading &&
+            Array(6)
+              .fill("item loading")
+              .map((item) => (
+                <Card>
+                  <CardContent className="p-6">
+                    <Skeleton active />
+                  </CardContent>
+                </Card>
+              ))}
           {isSuccess &&
-            data?.data?.length &&
-            data?.data.map((product: IProduct) => (
+            productData?.data?.length &&
+            productData?.data.map((product: IProduct) => (
               <ProductCard data={product} key={product._id}></ProductCard>
             ))}
         </div>
@@ -52,27 +92,42 @@ const AllProducts = () => {
           <Pagination>
             <PaginationContent>
               <PaginationItem>
-                <PaginationPrevious href="#" />
+                <PaginationPrevious
+                  onClick={() =>
+                  {
+                    console.log(paginationLinks[currentPage - 2])
+                    if(paginationLinks[currentPage - 2]){
+                      setCurrentPage(currentPage - 1)
+                    }
+                  }
+                  }
+                />
               </PaginationItem>
+
+              {paginationLinks}
+
+              {numberOfPages > 5 && (
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+              )}
+
               <PaginationItem>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#" isActive>
-                  2
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="#" />
+                <PaginationNext
+                  className=""
+                  onClick={() =>{
+                    console.log(paginationLinks[currentPage+1])
+                    if(
+                      paginationLinks[currentPage]
+                    ){
+                      setCurrentPage(currentPage + 1)
+                    }
+                    console.log(currentPage)
+                  }}
+                />
               </PaginationItem>
             </PaginationContent>
-          </Pagination>
+          </Pagination>{" "}
         </div>
       </div>
     </section>
