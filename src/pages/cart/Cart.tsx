@@ -46,7 +46,7 @@ const Cart = () => {
           <Card className="fixed bottom-7 right-7 shadow-2xl">
             <CardHeader className="pb-2">
               <CardDescription>Total Price</CardDescription>
-              <CardTitle className="text-4xl">${totalPrice}</CardTitle>
+              <CardTitle className="text-4xl">${totalPrice.toFixed(2)}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-xs text-muted-foreground">
@@ -55,7 +55,7 @@ const Cart = () => {
             </CardContent>
             <CardFooter>
               <Button>
-                Proceed to Checkout{" "}
+                Proceed to Checkout
                 <IoChevronForwardOutline></IoChevronForwardOutline>
               </Button>
             </CardFooter>

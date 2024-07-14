@@ -24,7 +24,7 @@ const ProductCard = ({
   const handleAddToCart = () => {
     if (orderedQuantity > availableQuantity) {
       toast.error("Insufficient Quantity");
-      return
+      return;
     } else if (!orderedQuantity) {
       toast.error("0 Quantity Selected");
       return;
@@ -60,7 +60,7 @@ const ProductCard = ({
 
         <div className="flex flex-col items-start ">
           <Link to={`/products/${_id}`}>
-            <CardTitle className="cursor-pointer md:text-2xl text-xl">
+            <CardTitle className="cursor-pointer whitespace-no-wrap text-ellipsis overflow-hidden md:text-2xl text-xl">
               {title}
             </CardTitle>
           </Link>
@@ -163,7 +163,7 @@ const ProductCard = ({
     // small card for product recommendations
     <Card className="text-left font-Untitled-Sans border-[1px] border-zinc-400 hover:scale-105 p-0 transition-all">
       <CardContent className="flex flex-col items-start justify-start h-full realtive p-4">
-        <div className="flex items-center justify-start h-full realtive">
+        <div className="flex items-start justify-start h-full realtive">
           <Link to={`/products/${_id}`} className="h-28 overflow-hidden">
             <img
               src={image}
@@ -171,32 +171,29 @@ const ProductCard = ({
               className="object-cover w-full h-full rounded-l-sm"
             />
           </Link>
-          <Link to={`/products/${_id}`}>
-            <h2 className="cursor-pointer font-semibold text-zinc-700 ml-2">
-              {title}
-            </h2>
+          <Link className="w-1/2" to={`/products/${_id}`}>
+            <div className="flex flex-col  ml-2 justify-between w-full">
+              <h2 className="cursor-pointer text-lg text-ellipsis overflow-hidden font-semibold text-zinc-700">
+                {title}
+              </h2>
+              <span className="font-[500] text-zinc-500">{brand}</span>
+
+              <div className="mt-2 flex items-center gap-2 font-[500]">
+                {rating}
+                <FaStar className="text-yellow-400" />
+              </div>
+            </div>
           </Link>
         </div>
 
-        <div className="flex flex-col w-full">
-          <div className="flex justify-between w-full">
-            <span className="font-[500] text-zinc-500 mt-2">{brand}</span>
-
-            <div className="mt-2 flex gap-2 font-[500]">
-              {rating}
-              <FaStar className="text-yellow-400" />
-            </div>
+        <div className="flex justify-between w-full">
+          <div className="flex text-zinc-800 font-[500]">
+            <DollarSignIcon></DollarSignIcon>
+            <span className="text-xl">{price}</span>
           </div>
-
-          <div className="flex mt-2 justify-between  w-full">
-            <div className="flex text-zinc-800 font-[500]">
-              <DollarSignIcon></DollarSignIcon>
-              <span className="text-xl">{price}</span>
-            </div>
-            <div className="flex items-center gap-2 text-zinc-500 font-[500]">
-              <span>In Stock</span>
-              <span className="text-xl">{availableQuantity}</span>
-            </div>
+          <div className="flex items-center gap-2 text-zinc-500 font-[500]">
+            <span>In Stock</span>
+            <span className="text-xl">{availableQuantity}</span>
           </div>
         </div>
       </CardContent>

@@ -1,7 +1,7 @@
 const SectionHeading = ({
   text,
   mode = "light",
-  hideInSm = true,
+  hideInSm = "both",
   animateFrom = undefined,
   center = false,
 }: {
