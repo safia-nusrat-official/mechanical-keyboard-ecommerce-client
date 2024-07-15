@@ -1,3 +1,7 @@
 .ant-menu-item span a{
     color: #001F3F;
   }
+
+.custom-navlink.active {
+  border-bottom: 2px solid #258bf1;
+}

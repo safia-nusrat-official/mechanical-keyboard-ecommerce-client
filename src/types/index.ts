@@ -7,7 +7,7 @@ export interface ICart {
 export interface IProduct {
   _id: string;
   title: string;
-  image: string;
+  images: string[];
   description: string;
   price: number;
   rating: number;

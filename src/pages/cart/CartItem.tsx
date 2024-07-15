@@ -14,7 +14,14 @@ import { IoClose } from "react-icons/io5";
 
 const CartItem = ({ data: cart }: { data: ICart }) => {
   const { orderedQuantity, product, id: cartId } = cart;
-  const { image, title, price, _id: productId, rating, brand } = product;
+  const {
+    images: image,
+    title,
+    price,
+    _id: productId,
+    rating,
+    brand,
+  } = product;
   const dispatch = useAppDispatch();
   return (
     <TableRow className="">
@@ -67,7 +74,9 @@ const CartItem = ({ data: cart }: { data: ICart }) => {
       </TableCell>
       <TableCell>
         <Button
-          onClick={() => dispatch(REMOVE_FROM_CART({ cartId:cartId as string }))}
+          onClick={() =>
+            dispatch(REMOVE_FROM_CART({ cartId: cartId as string }))
+          }
           variant={"secondary"}
           className="text-xl hover:scale-125 transition-transform text-red-600"
         >

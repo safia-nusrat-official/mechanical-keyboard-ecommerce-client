@@ -19,7 +19,15 @@ const ProductCard = ({
   variant?: "lg" | "md" | "sm";
 }) => {
   const [orderedQuantity, setQuantity] = useState(1);
-  const { title, image, brand, rating, price, availableQuantity, _id } = data;
+  const {
+    title,
+    images,
+    brand,
+    rating,
+    price,
+    availableQuantity,
+    _id,
+  } = data;
   const dispatch = useAppDispatch();
   const handleAddToCart = () => {
     if (orderedQuantity > availableQuantity) {
@@ -37,6 +45,7 @@ const ProductCard = ({
       toast.success("Item added successfully!");
     }
   };
+const cardThumbNail = images?.length >0 ? images[0]:"https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png"
 
   return variant === "md" ? (
     // normal card size for products page
@@ -55,7 +64,7 @@ const ProductCard = ({
           <IoChevronForward></IoChevronForward>
         </Link>
         <Link to={`/products/${_id}`} className="mb-2 h-28 overflow-hidden">
-          <img src={image} alt="" className="object-cover w-full h-full" />
+          <img src={cardThumbNail} alt="" className="object-cover w-full h-full" />
         </Link>
 
         <div className="flex flex-col items-start ">
@@ -117,7 +126,7 @@ const ProductCard = ({
       </h1>
       <span className="font-[500] text-zinc-500 mt-2 mb-6">{brand}</span>
       <div className="mt-2 flex items-center gap-2 font-[500]">
-        {rating}{" "}
+        {rating}
         <Rate allowHalf disabled defaultValue={rating > 5 ? 5 : rating} />
       </div>
       <div className="flex mb-4 justify-between  w-full">
@@ -166,7 +175,7 @@ const ProductCard = ({
         <div className="flex items-start justify-start h-full realtive">
           <Link to={`/products/${_id}`} className="h-28 overflow-hidden">
             <img
-              src={image}
+              src={cardThumbNail}
               alt=""
               className="object-cover w-full h-full rounded-l-sm"
             />

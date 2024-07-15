@@ -1,5 +1,4 @@
-// @ts-nocheck
-
+import { IProduct } from "@/types";
 import { baseApi } from "./baseApi";
 type TRequestParams = {
   limit?: number;
@@ -20,7 +19,6 @@ const productsApi = baseApi.injectEndpoints({
     }),
     getProducts: builder.query({
       query: (params: TRequestParams) => {
-        console.log(params);
         return {
           url: `/products`,
           method: "GET",
@@ -38,6 +36,25 @@ const productsApi = baseApi.injectEndpoints({
       },
       providesTags: ["product"],
     }),
+
+    updateProduct: builder.mutation({
+      query: ({ id, data }: { id: string; data: IProduct }) => {
+        return {
+          url: `/products/${id}`,
+          method: "PUT",
+          body: data,
+        };
+      },
+      invalidatesTags:["product", "products"]
+    }),
+
+    deleteProduct: builder.mutation({
+      query:(id:string)=>({
+        url:`/products/${id}`,
+        method:"DELETE"
+      }),
+      invalidatesTags:["product", "products"]
+    })
   }),
 });
 
@@ -45,4 +62,6 @@ export const {
   useGetProductsQuery,
   useGetSingleProductQuery,
   useGetProductsCountQuery,
+  useUpdateProductMutation,
+  useDeleteProductMutation
 } = productsApi;

@@ -40,10 +40,15 @@ const MainLayout = () => {
   useEffect(() => {
     if (location.pathname === "/") {
       setSelectedKeys("home");
+    }
+    else if (location.pathname === "/cart") {
+      setSelectedKeys("");
     } else if (
       sideBarItems.find((item) => item.key === location.pathname.slice(1))
     ) {
       setSelectedKeys(location.pathname.slice(1));
+    }else{
+      setSelectedKeys("");
     }
   }, [location.pathname]);
 
@@ -90,7 +95,7 @@ const MainLayout = () => {
             minWidth: 0,
           }}
         />
-        <NavLink to="/cart">
+        <NavLink to="/cart" className="custom-navlink">
           <div
             style={{
               fontWeight: "500",

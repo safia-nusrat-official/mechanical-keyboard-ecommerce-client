@@ -17,7 +17,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  console.log(id)
   const { data, isSuccess } = useGetSingleProductQuery(id as string);
 
   const { data: otherProducts } = useGetProductsQuery({
@@ -25,9 +24,9 @@ const ProductDetails = () => {
     page: 1,
   });
   const product = (isSuccess && data.data) as IProduct;
-  const { image, description } = product;
-  const productImages: string[] = [image];
-
+  console.log(product)
+  const { images: productImages, description } = product;
+  console.log(productImages)
   return (
     <section className="md:p-14 p-6 font-Untitled-Sans">
       <div className="md:grid flex flex-col gap-6 md:grid-cols-2">
@@ -42,10 +41,10 @@ const ProductDetails = () => {
             navigation={true}
             className="product-swiper"
           >
-            {productImages.length &&
+            {productImages?.length>0 &&
               productImages.map((productImage) => (
                 <SwiperSlide>
-                  <img src={productImage} alt="" className="bg-red-400" />
+                  <img src={productImage} alt="" />
                 </SwiperSlide>
               ))}
           </Swiper>

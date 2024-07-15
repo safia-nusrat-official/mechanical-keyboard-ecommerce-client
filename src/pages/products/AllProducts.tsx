@@ -8,49 +8,25 @@ import ProductCard from "./ProductCard";
 import SearchBar from "@/components/shared/search/SearchBar";
 import gradientBg from "../../assets/images/gradient-bg.jpg";
 import { useState } from "react";
-import { Radio, Select, Skeleton, Switch, Tag } from "antd";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import { Radio, Select, Skeleton, Switch } from "antd";
 import { Card, CardContent } from "@/components/ui/card";
 import { BsSortDown } from "react-icons/bs";
-import { IoClose, IoFilterOutline } from "react-icons/io5";
+import { IoFilterOutline } from "react-icons/io5";
 import { FaArrowDownLong, FaArrowUpLong } from "react-icons/fa6";
 import "./products.css";
 import SectionHeading from "@/components/shared/SectionHeading";
+import ProductPagination from "@/utils/productPagination";
 
 const AllProducts = () => {
   // pagination logic
-  const { data, isSuccess: productCountFetchSuccess } =
+  const { data: productCountData, isSuccess: productCountFetchSuccess } =
     useGetProductsCountQuery(null);
-  const numberOfProducts: number = productCountFetchSuccess && data?.data;
-  const productsPerPage = 6;
-  const numberOfPages = Math.ceil(numberOfProducts / productsPerPage);
-  const [currentPage, setCurrentPage] = useState(1);
-  const paginationLinks = Array(numberOfPages)
-    .fill(0)
-    .map((item, index) => (
-      <PaginationItem>
-        <PaginationLink
-          className={`${currentPage === index + 1 && "text-black"}`}
-          isActive={currentPage === index + 1}
-          onClick={() => setCurrentPage(index + 1)}
-        >
-          {index + 1}
-        </PaginationLink>
-      </PaginationItem>
-    ));
-
   const [searchTerm, setSearchTerm] = useState("");
   const [showFilter, setShowFilter] = useState(false);
   const [filters, setFilters] = useState({});
   const [sort, setSort] = useState("title");
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 6;
   const priceRanges = [
     { min: 100, max: 150 },
     { min: 150, max: 200 },
@@ -59,7 +35,6 @@ const AllProducts = () => {
     { min: 450, max: 500 },
     { min: 500, max: 550 },
     { min: 550, max: 600 },
-    
   ];
   const priceLabels = priceRanges.map((range) => ({
     label: `$${range.min} - $${range.max}`,
@@ -71,7 +46,6 @@ const AllProducts = () => {
     sort,
     ...filters,
   };
-  console.log(filters, query);
   const {
     data: productData,
     isSuccess,
@@ -186,48 +160,17 @@ const AllProducts = () => {
               <ProductCard data={product} key={product._id}></ProductCard>
             ))}
 
-            {
-              isSuccess &&  productData?.data?.length===0 && <SectionHeading text="Uh oh, Looks like there's no data.">
-
-              </SectionHeading>
-            }
+          {isSuccess && productData?.data?.length === 0 && (
+            <SectionHeading text="Uh oh, Looks like there's no data."></SectionHeading>
+          )}
         </div>
         <div className="mt-8 text-white">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious
-                  onClick={() => {
-                    console.log(paginationLinks[currentPage - 2]);
-                    if (paginationLinks[currentPage - 2]) {
-                      setCurrentPage(currentPage - 1);
-                    }
-                  }}
-                />
-              </PaginationItem>
-
-              {paginationLinks}
-
-              {numberOfPages > 5 && (
-                <PaginationItem>
-                  <PaginationEllipsis />
-                </PaginationItem>
-              )}
-
-              <PaginationItem>
-                <PaginationNext
-                  className=""
-                  onClick={() => {
-                    console.log(paginationLinks[currentPage + 1]);
-                    if (paginationLinks[currentPage]) {
-                      setCurrentPage(currentPage + 1);
-                    }
-                    console.log(currentPage);
-                  }}
-                />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>{" "}
+          <ProductPagination
+            productsPerPage={productsPerPage}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            numberOfProducts={productCountFetchSuccess && productCountData.data}
+          ></ProductPagination>
         </div>
       </div>
     </section>
