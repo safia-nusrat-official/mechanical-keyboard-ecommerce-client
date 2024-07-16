@@ -151,7 +151,7 @@ const MainLayout = () => {
         <Content>
           <Outlet></Outlet>
           <div className="fixed bottom-0 h-screen right-0">
-            <Toaster duration={2000} visibleToasts={1} position={"bottom-right"}></Toaster>
+            <Toaster richColors={true} duration={2000} visibleToasts={1} position={"bottom-right"}></Toaster>
           </div>
         </Content>
       </Layout>

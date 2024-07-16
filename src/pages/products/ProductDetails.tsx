@@ -8,7 +8,7 @@ import {
   useGetSingleProductQuery,
 } from "@/redux/api/productApi";
 import { IProduct } from "@/types";
-import { Card } from "antd";
+import { Card, Skeleton } from "antd";
 import { NavLink, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ProductCard from "./ProductCard";
@@ -17,16 +17,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { data, isSuccess } = useGetSingleProductQuery(id as string);
+  const { data, isSuccess, isLoading } = useGetSingleProductQuery(id as string);
 
   const { data: otherProducts } = useGetProductsQuery({
     limit: 5,
     page: 1,
   });
   const product = (isSuccess && data.data) as IProduct;
-  console.log(product)
+  console.log(product, isLoading);
   const { images: productImages, description } = product;
-  console.log(productImages)
+
   return (
     <section className="md:p-14 p-6 font-Untitled-Sans">
       <div className="md:grid flex flex-col gap-6 md:grid-cols-2">
@@ -41,7 +41,7 @@ const ProductDetails = () => {
             navigation={true}
             className="product-swiper"
           >
-            {productImages?.length>0 &&
+            {productImages?.length > 0 &&
               productImages.map((productImage) => (
                 <SwiperSlide>
                   <img src={productImage} alt="" />
@@ -50,8 +50,20 @@ const ProductDetails = () => {
           </Swiper>
         </div>
 
-        <ProductCard data={product} variant="lg"></ProductCard>
-        <Card className="font-Untitled-Sans font-medium">{description}</Card>
+        {isLoading && (
+          <Card>
+            <Skeleton active title={true} />
+          </Card>
+        )}
+        {isSuccess && <ProductCard data={product} variant="lg"></ProductCard>}
+        {isSuccess && (
+          <Card className="font-Untitled-Sans font-medium">{description}</Card>
+        )}
+        {isLoading && (
+          <Card>
+            <Skeleton active paragraph={true} />
+          </Card>
+        )}
 
         <div className="relative">
           <h4 className="mb-2 text-xl font-semibold">You May Also Like</h4>

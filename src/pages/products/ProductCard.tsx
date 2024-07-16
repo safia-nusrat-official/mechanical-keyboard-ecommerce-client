@@ -42,7 +42,7 @@ const ProductCard = ({
         orderedQuantity: orderedQuantity,
       };
       dispatch(ADD_TO_CART(cartItem));
-      toast.success("Item added successfully!");
+      toast.success("Item added to cart successfully!");
     }
   };
 const cardThumbNail = images?.length >0 ? images[0]:"https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png"

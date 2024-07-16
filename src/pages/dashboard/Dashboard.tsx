@@ -2,6 +2,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -15,20 +16,32 @@ import {
 import { useGetProductsQuery } from "@/redux/api/productApi";
 import { IProduct } from "@/types";
 import DashboardListItem from "./DashboardListItem";
-import ProductPagination from "@/utils/productPagination";
+import { Toaster } from "sonner";
+import { Button } from "@/components/ui/button";
+import { GoPlusCircle } from "react-icons/go";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   const { data, isSuccess } = useGetProductsQuery({
-    limit:10,
-    page:1
+    limit: 10,
+    page: 1,
   });
+
+  
   return (
     <Card className="md:p-10">
       <CardHeader>
         <CardTitle>Products</CardTitle>
-        <CardDescription>
-          List of all the products which you can manage by updating information
-          or deleting it.
+        <CardDescription className="flex justify-between">
+          <span>
+            List of all the products which you can manage by updating
+            information or deleting it.
+          </span>
+          <Link to="/create-product">
+          <Button className="flex gap-2">Add a Product
+            <GoPlusCircle className="text-xl"></GoPlusCircle>
+          </Button>
+          </Link>
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -51,7 +64,10 @@ export default function Dashboard() {
             {isSuccess &&
               data?.data?.length &&
               data.data.map((product: IProduct) => (
-                <DashboardListItem key={product._id} product={product}></DashboardListItem>
+                <DashboardListItem
+                  key={product._id}
+                  product={product}
+                ></DashboardListItem>
               ))}
           </TableBody>
         </Table>
@@ -59,6 +75,9 @@ export default function Dashboard() {
         currentPage={}
         ></ProductPagination> */}
       </CardContent>
+      <CardFooter>
+        
+      </CardFooter>
     </Card>
   );
 }

@@ -7,6 +7,7 @@ import AllProducts from "../pages/products/AllProducts.tsx";
 import Dashboard from "../pages/dashboard/Dashboard.tsx";
 import Cart from "../pages/cart/Cart.tsx";
 import ProductDetails from "@/pages/products/ProductDetails.tsx";
+import CreateProduct from "@/pages/dashboard/CreateProduct.tsx";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard></Dashboard>,
+      },
+      {
+        path: "/create-product",
+        element: <CreateProduct></CreateProduct>,
       },
     ],
   },
