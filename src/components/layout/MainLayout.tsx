@@ -4,12 +4,12 @@ import { FaBars, FaCartShopping } from "react-icons/fa6";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import "./layout.css";
 import { useAppSelector } from "@/redux/hook";
-import { getCartItems } from "@/redux/features/cart/cartSlice";
+import { GET_CART } from "@/redux/features/cart/cartSlice";
 import { Toaster } from "sonner";
 const { Content, Header, Footer, Sider } = Layout;
 
 const MainLayout = () => {
-  const { totalItems: totalCartItems } = useAppSelector(getCartItems);
+  const { totalItems: totalCartItems } = useAppSelector(GET_CART);
 
   const location = useLocation();
   const sideBarItems = [
@@ -40,14 +40,13 @@ const MainLayout = () => {
   useEffect(() => {
     if (location.pathname === "/") {
       setSelectedKeys("home");
-    }
-    else if (location.pathname === "/cart") {
+    } else if (location.pathname === "/cart") {
       setSelectedKeys("");
     } else if (
       sideBarItems.find((item) => item.key === location.pathname.slice(1))
     ) {
       setSelectedKeys(location.pathname.slice(1));
-    }else{
+    } else {
       setSelectedKeys("");
     }
   }, [location.pathname]);
@@ -151,7 +150,12 @@ const MainLayout = () => {
         <Content>
           <Outlet></Outlet>
           <div className="fixed bottom-0 h-screen right-0">
-            <Toaster richColors={true} duration={2000} visibleToasts={1} position={"bottom-right"}></Toaster>
+            <Toaster
+              richColors={true}
+              duration={2000}
+              visibleToasts={1}
+              position={"bottom-right"}
+            ></Toaster>
           </div>
         </Content>
       </Layout>

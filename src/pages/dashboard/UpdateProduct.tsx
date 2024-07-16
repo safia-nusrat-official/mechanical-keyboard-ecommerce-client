@@ -32,15 +32,15 @@ export const UpdateModal = ({ product }: { product: IProduct }) => {
   } = product;
   const [newImgList, setNewImgList] = useState<string[]>(images);
   const { register, handleSubmit, formState } = useForm({
-    mode:"onChange",
-    defaultValues:{
-      ...product
-    }
+    mode: "onChange",
+    defaultValues: {
+      ...product,
+    },
   });
 
   const [updateProduct, { isLoading }] = useUpdateProductMutation();
   const [sumbmitComplete, setSubmitComplete] = useState(false);
-  console.log(formState)
+  console.log(formState);
 
   const handleUpdate = async (data: any) => {
     console.log(data);
@@ -92,9 +92,7 @@ export const UpdateModal = ({ product }: { product: IProduct }) => {
             Make changes to your profile here. Click save when you're done.
           </DialogDescription>
         </DialogHeader>
-        <form
-          onSubmit={handleSubmit(handleUpdate)}
-        >
+        <form onSubmit={handleSubmit(handleUpdate)}>
           <div className="grid md:grid-cols-2 gap-4 py-4">
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="font-medium">
@@ -182,7 +180,7 @@ export const UpdateModal = ({ product }: { product: IProduct }) => {
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit" disabled={!(formState.isDirty)}>
+            <Button type="submit" disabled={!formState.isDirty}>
               Save changes
             </Button>
           </DialogFooter>

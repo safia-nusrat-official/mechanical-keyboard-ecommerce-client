@@ -19,15 +19,7 @@ const ProductCard = ({
   variant?: "lg" | "md" | "sm";
 }) => {
   const [orderedQuantity, setQuantity] = useState(1);
-  const {
-    title,
-    images,
-    brand,
-    rating,
-    price,
-    availableQuantity,
-    _id,
-  } = data;
+  const { title, images, brand, rating, price, availableQuantity, _id } = data;
   const dispatch = useAppDispatch();
   const handleAddToCart = () => {
     if (orderedQuantity > availableQuantity) {
@@ -45,7 +37,10 @@ const ProductCard = ({
       toast.success("Item added to cart successfully!");
     }
   };
-const cardThumbNail = images?.length >0 ? images[0]:"https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png"
+  const cardThumbNail =
+    images?.length > 0
+      ? images[0]
+      : "https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png";
 
   return variant === "md" ? (
     // normal card size for products page
@@ -64,7 +59,11 @@ const cardThumbNail = images?.length >0 ? images[0]:"https://psediting.websites.
           <IoChevronForward></IoChevronForward>
         </Link>
         <Link to={`/products/${_id}`} className="mb-2 h-28 overflow-hidden">
-          <img src={cardThumbNail} alt="" className="object-cover w-full h-full" />
+          <img
+            src={cardThumbNail}
+            alt=""
+            className="object-cover w-full h-full"
+          />
         </Link>
 
         <div className="flex flex-col items-start ">
@@ -155,10 +154,7 @@ const cardThumbNail = images?.length >0 ? images[0]:"https://psediting.websites.
           </Button>
           <Button
             className="rounded-none -top-[1.5px] relative flex items-center justify-center font-[500] text-zinc-900 bg-transparent text-[2.5rem] border-l-2 border-zinc-900 hover:bg-zinc-900 hover:text-white transition:all"
-            onClick={() =>
-              orderedQuantity > availableQuantity &&
-              setQuantity(orderedQuantity - 1)
-            }
+            onClick={() => orderedQuantity > 0 && setQuantity(orderedQuantity - 1)}
           >
             <span className="relative -top-[5px] -left-[2px]">-</span>
           </Button>

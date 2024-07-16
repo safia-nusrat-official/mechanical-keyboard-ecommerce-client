@@ -11,15 +11,15 @@ import SectionHeading from "@/components/shared/SectionHeading";
 import ProductCard from "../../products/ProductCard";
 import CustomButton from "@/components/shared/CustomButton";
 import { Link } from "react-router-dom";
+import { Card } from "@/components/ui/card";
+import { Skeleton } from "antd";
 
 const FeaturedProductsSection = () => {
-  const { data, isSuccess } = useGetProductsQuery(
-    {
-      limit:6,
-      page:1,
-      fields:"-description"
-    }
-  );
+  const { data, isSuccess, isLoading } = useGetProductsQuery({
+    limit: 6,
+    page: 1,
+    fields: "-description",
+  });
   const products: IProduct[] = isSuccess && data.data;
   return (
     <section className="overflow-hidden h-[3200px] md:h-[1165px] bg-red-400 relative">
@@ -62,7 +62,17 @@ const FeaturedProductsSection = () => {
         <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
           {products.length &&
             products.map((product) => (
-              <ProductCard data={product} key={product._id} variant="md"></ProductCard>
+              <ProductCard
+                data={product}
+                key={product._id}
+                variant="md"
+              ></ProductCard>
+            ))}
+          {isLoading &&
+            Array(6).map((skeleton) => (
+              <Card>
+                <Skeleton active></Skeleton>
+              </Card>
             ))}
         </div>
         <div className="overlay absolute bottom-0 left-0 w-full md:h-1/3 bg-gradient-to-t from-custom-primary to-transparent"></div>

@@ -17,20 +17,27 @@ import { toast, Toaster } from "sonner";
 import { IProduct } from "@/types";
 import { Rate } from "antd";
 import { useNavigate } from "react-router-dom";
-import { IoReturnUpForwardOutline } from "react-icons/io5";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 const CreateProduct = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isDirty, errors },
+  } = useForm();
   const [imageList, setImageList] = useState<string[]>([]);
   const [createProduct, { isLoading }] = useCreateProductMutation();
   console.log(isLoading);
   const navigate = useNavigate();
+  console.log(imageList);
 
   const handleCreateProduct = async (data: any) => {
+    console.log(imageList);
     try {
       if (imageList.length === 0 && !data.image) {
         toast.error("You must atleast add 1 image of your product!");
-        return
+        return;
       }
       const product: Omit<IProduct, "_id"> = {
         title: data.title,
@@ -56,29 +63,18 @@ const CreateProduct = () => {
           500
         );
       } else if (productCreated?.error) {
-        console.log(productCreated.error?.data?.message);
-        toast.error(productCreated.error?.data?.message, {
+        // @ts-ignore
+        const errorMessage = productCreated.error?.data?.data?.message;
+        toast.error(errorMessage, {
           duration: 5000,
         });
       }
     } catch (err) {
-      toast.error(err?.message || "Unexpected Error");
+      toast.error((err as { message?: string })?.message || "Unexpected Error");
       console.log(err);
     }
   };
 
-  const demo = {
-    title: "Wireless Mechanical Keyboard",
-    description:
-      "Enjoy the freedom of wireless connectivity with this mechanical keyboard, featuring Cherry MX Brown switches and long battery life.",
-    price: 169.99,
-    rating: 4.7,
-    images: [
-      "https://www.jbhifi.com.au/cdn/shop/products/609531-Product-0-I-638145569599312563.jpg?v=1678920625",
-    ],
-    brand: "FreeType",
-    availableQuantity: 18,
-  };
   return (
     <section className="md:p-14 p-4">
       <Card>
@@ -90,40 +86,52 @@ const CreateProduct = () => {
           ></Toaster>
         </div>
         {isLoading && (
-          <div className="fixed overlay grid place-items-center h-screen w-screen bg-[#00000084] top-0 left-0">
+          <div className="fixed overlay grid place-items-center h-screen w-screen bg-[#00000084] top-0 z-50 left-0">
             <LoadingSpinner></LoadingSpinner>
           </div>
         )}
 
         <form onSubmit={handleSubmit(handleCreateProduct)}>
           <CardHeader>
-            <CardTitle>Products</CardTitle>
+            <CardTitle>Add a Product</CardTitle>
             <CardDescription className="flex md:flex-row flex-col justify-between gap-4">
               <span>
-                List of all the products which you can manage by updating
-                information or deleting it.
+                Fill up the following information to add a new product.
               </span>
               <Button className="md:block hidden" type="submit">
-                Save Changes
+                Add Product
               </Button>
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-3">
               <div className="grid gap-3">
-                <label htmlFor="title" className="text-zinc-700 font-medium">
+                <label
+                  htmlFor="title"
+                  className="text-zinc-700 font-medium after:content-['*'] after:text-red-500 after:ml-0.5"
+                >
                   Product Name
                 </label>
                 <Input
                   id="title"
                   type="text"
-                  className="w-full"
+                  className={` w-full`}
                   placeholder="Enter your product's name"
-                  {...register("title", { required: true })}
+                  {...register("title", {
+                    required: "Product Name is required.",
+                  })}
                 />
+                {errors?.title && (
+                  <span className="text-xs text-red-500">
+                    {errors.title?.message as string}
+                  </span>
+                )}
               </div>
               <div className="grid gap-3">
-                <label htmlFor="brand" className="text-zinc-700 font-medium">
+                <label
+                  htmlFor="brand"
+                  className="after:content-['*'] after:text-red-500 after:ml-0.5 text-zinc-700 font-medium"
+                >
                   Brand Name
                 </label>
                 <Input
@@ -131,13 +139,20 @@ const CreateProduct = () => {
                   type="text"
                   className="w-full"
                   placeholder="Enter your product's brand name"
-                  {...register("brand", { required: true })}
+                  {...register("brand", {
+                    required: "Brand name is required.",
+                  })}
                 />
+                {errors?.brand && (
+                  <span className="text-xs text-red-500">
+                    {errors.brand?.message as string}
+                  </span>
+                )}
               </div>
               <div className="grid gap-3">
                 <label
                   htmlFor="description"
-                  className="text-zinc-700 font-medium"
+                  className="text-zinc-700 after:content-['*'] after:text-red-500 after:ml-0.5 font-medium"
                 >
                   Product Description
                 </label>
@@ -145,12 +160,22 @@ const CreateProduct = () => {
                   id="description"
                   rows={10}
                   placeholder="Enter your product's description"
-                  {...register("description", { required: true })}
+                  {...register("description", {
+                    required: "Description is required.",
+                  })}
                   className="min-h-32"
                 />
+                {errors?.description && (
+                  <span className="text-xs text-red-500">
+                    {errors.description?.message as string}
+                  </span>
+                )}
               </div>
               <div className="grid gap-3">
-                <label htmlFor="images" className="text-zinc-700 font-medium">
+                <label
+                  htmlFor="images"
+                  className="text-zinc-700 after:content-['*'] after:text-red-500 after:ml-0.5 font-medium"
+                >
                   Product Images
                 </label>
                 <p className="ant-upload-hint">
@@ -173,15 +198,18 @@ const CreateProduct = () => {
               </div>
               <div className="grid md:col-span-2 col-span-1 grid-cols-1 gap-6 md:grid-cols-3">
                 <div className="grid gap-3">
-                  <label htmlFor="price" className="text-zinc-700 font-medium">
+                  <label
+                    htmlFor="price"
+                    className="text-zinc-700 after:content-['*'] after:text-red-500 after:ml-0.5 font-medium"
+                  >
                     Product Price
                   </label>
-                  <div className="relative">
+                  <div className="relative h-fit">
                     <Input
                       id="price"
                       min="0"
                       step="0.01"
-                      {...register("price")}
+                      {...register("price", { required: "Price is required" })}
                       type="number"
                       placeholder="Enter your product's price"
                       className="col-span-3 pl-10"
@@ -190,11 +218,17 @@ const CreateProduct = () => {
                       $
                     </span>
                   </div>
+
+                  {errors?.price && (
+                    <span className="text-xs text-red-500">
+                      {errors.price?.message as string}
+                    </span>
+                  )}
                 </div>
                 <div className="grid gap-3">
                   <label
                     htmlFor="availableQuantity"
-                    className="text-zinc-700 font-medium"
+                    className="text-zinc-700 after:content-['*'] after:text-red-500 after:ml-0.5 font-medium"
                   >
                     Available Quantity
                   </label>
@@ -205,22 +239,32 @@ const CreateProduct = () => {
                     step="1"
                     className="w-full"
                     placeholder="Enter the available quantity"
-                    {...register("availableQuantity", { required: true })}
+                    {...register("availableQuantity", {
+                      required: "Quantity is required.",
+                    })}
                   />
+
+                  {errors?.availableQuantity && (
+                    <span className="text-xs text-red-500">
+                      {errors.availableQuantity?.message as string}
+                    </span>
+                  )}
                 </div>
                 <div className="grid gap-3">
                   <label
-                    htmlFor="availableQuantity"
-                    className="text-zinc-700 font-medium"
+                    htmlFor="rating"
+                    className="text-zinc-700 after:content-['*'] after:text-red-500 after:ml-0.5 font-medium"
                   >
                     Product Rating
                   </label>
                   <div className="relative">
                     <Input
                       id="rating"
-                      {...register("rating")}
+                      {...register("rating", {
+                        required: "Rating is required",
+                      })}
                       type="number"
-                      min="0"
+                      min="1"
                       max="5"
                       step="0.1"
                       placeholder="Enter your product's rating"
@@ -230,6 +274,11 @@ const CreateProduct = () => {
                       <Rate count={1} disabled defaultValue={1} />
                     </span>
                   </div>
+                  {errors?.rating && (
+                    <span className="text-xs text-red-500">
+                      {errors.rating?.message as string}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>

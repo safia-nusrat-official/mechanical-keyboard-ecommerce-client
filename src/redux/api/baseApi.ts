@@ -6,7 +6,7 @@ export const baseApi = createApi({
     baseUrl: `http://localhost:5000/api`,
   }),
   endpoints: () => ({}),
-  tagTypes: ["products", "product"],
+  tagTypes: ["products", "product", "orders"],
 });
 
 console.log(baseApi.endpoints);

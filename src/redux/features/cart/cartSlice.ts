@@ -32,7 +32,7 @@ const cartSlice = createSlice({
       } else {
         productAlreadyAdded.orderedQuantity += orderedQuantity;
       }
-      
+
       state.totalItems += action.payload.orderedQuantity;
       state.totalPrice += productPrice * orderedQuantity;
     },
@@ -66,6 +66,9 @@ const cartSlice = createSlice({
       state.totalItems += 1;
       state.totalPrice += itemPrice;
     },
+    CLEAR_CART:(state)=>{
+      state = initialState
+    }
   },
   initialState,
 });
@@ -73,9 +76,10 @@ const cartSlice = createSlice({
 export const {
   ADD_TO_CART,
   REMOVE_FROM_CART,
+  CLEAR_CART,
   REDUCE_QUANTITY,
   INCREASE_QUANTITY,
 } = cartSlice.actions;
-export const getCartItems = (state: RootState) => state.cart;
+export const GET_CART = (state: RootState) => state.cart;
 
 export default cartSlice.reducer;

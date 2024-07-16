@@ -14,3 +14,21 @@ export interface IProduct {
   brand: string;
   availableQuantity: number;
 }
+
+export interface IOrder {
+  date: string;
+  paymentMethod: "cash"|"stripe";
+  status: 'delivered' | 'pending' | 'cancelled';
+  name: string;
+  phone: string;
+  address: string;
+  email: string;
+  orderedProducts: TOrderedProduct[];
+  totalPrice: number;
+  totalOrderedQuantity: number;
+}
+
+export type TOrderedProduct = {
+  productId: string;
+  orderedQuantity: number;
+};
