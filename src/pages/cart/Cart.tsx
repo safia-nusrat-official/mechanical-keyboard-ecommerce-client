@@ -52,12 +52,17 @@ const Cart = () => {
               </div>
             </CardContent>
             <CardFooter>
-              <Link to={`/check-out`}>
-                <Button>
-                  Proceed to Checkout
-                  <IoChevronForwardOutline></IoChevronForwardOutline>
-                </Button>
-              </Link>
+              <Button
+                disabled={
+                  cartItems.filter(
+                    (item) => item.product.availableQuantity === 0
+                  ).length > 0
+                }
+              >
+                <Link to={`/check-out`}>Proceed to Checkout</Link>
+
+                <IoChevronForwardOutline></IoChevronForwardOutline>
+              </Button>
             </CardFooter>
           </Card>
         </div>

@@ -13,7 +13,7 @@ const CheckoutSuccess = () => {
             Browse more products
           </Button>
         </Link>,
-        <Link to="/cart">
+        <Link to="/">
           <Button key="buy">Go back home</Button>,
         </Link>,
       ]}

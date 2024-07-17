@@ -40,21 +40,25 @@ const AllProducts = () => {
     label: `$${range.min} - $${range.max}`,
     value: `{ "priceRangeMin": "${range.min}", "priceRangeMax": "${range.max}" }`,
   }));
-  const query = {
-    limit: productsPerPage,
-    page: currentPage,
-    sort,
-    ...filters,
-  };
   const {
     data: productData,
     isSuccess,
     isLoading,
   } = useGetProductsQuery(
-    !searchTerm
-      ? query
-      : {
+    searchTerm
+      ? {
           searchTerm,
+          sort,
+        }
+      : Object.keys(filters).length
+      ? {
+          sort,
+          ...filters,
+        }
+      : {
+          limit: productsPerPage,
+          page: currentPage,
+          sort,
         }
   );
   const handleSearch: SearchProps["onSearch"] = (value: string) => {
@@ -70,7 +74,7 @@ const AllProducts = () => {
         <div className="mb-8 bg-white rounded-md p-4 flex flex-col gap-4">
           <SearchBar handleSearch={handleSearch}></SearchBar>
 
-          <div className="flex justify-between gap-2">
+          <div className="flex md:flex-row flex-col justify-between gap-2">
             <div className="sort flex items-center font-medium">
               <BsSortDown className="text-xl mr-2"></BsSortDown>
               <span className="mr-4">Sort By:</span>
@@ -105,30 +109,6 @@ const AllProducts = () => {
               ></Switch>
             </div>
           </div>
-
-          {/* {showFilter && (
-            <div className="flex items-end justify-end">
-              {priceRanges.map((range) => (
-                <Tag
-                  className={`hover:text-blue-300 hover:border-blue-300 font-medium cursor-pointer scale-105 flex w-fit items-center font-Untitled-Sans text-zinc-500`}
-                  onClick={(e) => {
-                    setFilters({
-                      priceRangeMin: range.min,
-                      priceRangeMax: range.max,
-                    });
-                    if (e.currentTarget.style.color === "#3b82f6") {
-                      e.currentTarget.style.color = "";
-                    } else {
-                      e.currentTarget.style.color = "#3b82f6";
-                      e.currentTarget.style.borderColor = "#3b82f6";
-                    }
-                  }}
-                >
-                  ${range.min} - ${range.max}
-                </Tag>
-              ))}
-            </div>
-          )} */}
 
           {showFilter && (
             <Radio.Group

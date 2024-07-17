@@ -22,7 +22,11 @@ const ProductCard = ({
   const { title, images, brand, rating, price, availableQuantity, _id } = data;
   const dispatch = useAppDispatch();
   const handleAddToCart = () => {
-    if (orderedQuantity > availableQuantity) {
+    if(availableQuantity===0){
+      toast.error("Product is out of stock!");
+      return;
+    }
+    else if (orderedQuantity > availableQuantity) {
       toast.error("Insufficient Quantity");
       return;
     } else if (!orderedQuantity) {
@@ -81,10 +85,17 @@ const ProductCard = ({
               <DollarSignIcon></DollarSignIcon>
               <span className="text-xl">{price}</span>
             </div>
-            <div className="flex items-center gap-2 text-zinc-500 font-[500]">
-              <span>In Stock</span>
-              <span className="text-xl">{availableQuantity}</span>
-            </div>
+            {availableQuantity > 0 && (
+          <div className="flex items-center gap-2 text-zinc-500 font-[500]">
+            <span>In Stock</span>
+            <span className="text-xl">{availableQuantity}</span>
+          </div>
+        )}
+        {availableQuantity === 0 && (
+          <div className="flex items-center gap-2 text-zinc-500 font-[500]">
+            <span>Out of Stock</span>
+          </div>
+        )}
           </div>
           <div className="grid w-full grid-cols-1 md:grid-cols-2 md:gap-2 gap-4 mt-2 h-10">
             <div className="grid grid-cols-3 font-semibold border-2 overflow-visible md:overflow-hidden rounded-md border-zinc-900 items-center">
@@ -129,10 +140,17 @@ const ProductCard = ({
         <Rate allowHalf disabled defaultValue={rating > 5 ? 5 : rating} />
       </div>
       <div className="flex mb-4 justify-between  w-full">
-        <div className="flex items-center gap-2 text-zinc-500 font-[500]">
-          <span>In Stock</span>
-          <span className="text-xl">{availableQuantity}</span>
-        </div>
+        {availableQuantity > 0 && (
+          <div className="flex items-center gap-2 text-zinc-500 font-[500]">
+            <span>In Stock</span>
+            <span className="text-xl">{availableQuantity}</span>
+          </div>
+        )}
+        {availableQuantity === 0 && (
+          <div className="flex items-center gap-2 text-zinc-500 font-[500]">
+            <span>Out of Stock</span>
+          </div>
+        )}
         <div className="flex items-center text-zinc-800 font-[500]">
           <DollarSignIcon></DollarSignIcon>
           <span className="text-xl">{price}</span>
@@ -154,7 +172,9 @@ const ProductCard = ({
           </Button>
           <Button
             className="rounded-none -top-[1.5px] relative flex items-center justify-center font-[500] text-zinc-900 bg-transparent text-[2.5rem] border-l-2 border-zinc-900 hover:bg-zinc-900 hover:text-white transition:all"
-            onClick={() => orderedQuantity > 0 && setQuantity(orderedQuantity - 1)}
+            onClick={() =>
+              orderedQuantity > 0 && setQuantity(orderedQuantity - 1)
+            }
           >
             <span className="relative -top-[5px] -left-[2px]">-</span>
           </Button>
@@ -196,10 +216,17 @@ const ProductCard = ({
             <DollarSignIcon></DollarSignIcon>
             <span className="text-xl">{price}</span>
           </div>
+          {availableQuantity > 0 && (
           <div className="flex items-center gap-2 text-zinc-500 font-[500]">
             <span>In Stock</span>
             <span className="text-xl">{availableQuantity}</span>
           </div>
+        )}
+        {availableQuantity === 0 && (
+          <div className="flex items-center gap-2 text-zinc-500 font-[500]">
+            <span>Out of Stock</span>
+          </div>
+        )}
         </div>
       </CardContent>
     </Card>

@@ -1,0 +1,4 @@
+.StripeElement .__PrivateStripeElement{
+    display: flex;
+    flex-direction: column;
+}

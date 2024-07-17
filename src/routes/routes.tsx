@@ -9,7 +9,8 @@ import Cart from "../pages/cart/Cart.tsx";
 import ProductDetails from "@/pages/products/ProductDetails.tsx";
 import CreateProduct from "@/pages/dashboard/CreateProduct.tsx";
 import Checkout from "@/pages/payment/Checkout.tsx";
-import CheckoutSuccess from "@/pages/payment/checkoutSuccess.tsx";
+import CheckoutSuccess from "@/pages/payment/CheckoutSuccess.tsx";
+import StripePayment from "@/pages/payment/StripePayment.tsx";
 
 const router = createBrowserRouter([
   {
@@ -43,12 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/check-out",
         element: <Checkout></Checkout>,
-        children:[
-          {
-            path:"success",
-            element:<CheckoutSuccess></CheckoutSuccess>
-          }
-        ]
+      },
+      {
+        path:"/check-out/success",
+        element:<CheckoutSuccess></CheckoutSuccess>
       },
       {
         path: "/dashboard",

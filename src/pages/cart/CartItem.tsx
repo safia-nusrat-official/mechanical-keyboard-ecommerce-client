@@ -15,7 +15,7 @@ import { IoClose } from "react-icons/io5";
 const CartItem = ({ data: cart }: { data: ICart }) => {
   const { orderedQuantity, product, id: cartId } = cart;
   const {
-    images: image,
+    images,
     title,
     price,
     _id: productId,
@@ -28,7 +28,7 @@ const CartItem = ({ data: cart }: { data: ICart }) => {
       <TableCell>
         <Link to={`/products/${productId}`} className="">
           <img
-            src={image}
+            src={images[0]}
             alt=""
             className="w-28 hover:scale-[1.25] transition-all"
           />
