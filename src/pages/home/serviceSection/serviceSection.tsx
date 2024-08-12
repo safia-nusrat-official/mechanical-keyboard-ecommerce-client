@@ -57,8 +57,8 @@ const ServiceSection = () => {
             data-aos="fade-left"
             data-aos-animation-duration="10000"
             data-aos-easing="ease-in-out"
-            data-aos-once="false"
-            data-aos-delay="100"
+              data-aos-once="false"
+              data-aos-delay="100"
             className="flex flex-col mt-4"
           >
             <div className="flex gap-2 items-center text-lg">

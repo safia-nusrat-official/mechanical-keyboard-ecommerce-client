@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const HeroHeader = () => {
   const lines = ["Discover Premium", "Mechanical", "Keyboards"];
 
-  const typingSpeed = 100; // Typing speed in milliseconds
+  const typingSpeed = 100;
 
   const [displayedText, setDisplayedText] = useState(["", "", ""]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);

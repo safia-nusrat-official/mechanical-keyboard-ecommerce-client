@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App.tsx";
 import Home from "../pages/home/Home.tsx";
-import AboutUs from "../pages/AboutUs.tsx";
+import AboutUs from "../pages/aboutUs/AboutUs.tsx";
 import ContactUs from "../pages/ContactUs.tsx";
 import AllProducts from "../pages/products/AllProducts.tsx";
 import Dashboard from "../pages/dashboard/Dashboard.tsx";

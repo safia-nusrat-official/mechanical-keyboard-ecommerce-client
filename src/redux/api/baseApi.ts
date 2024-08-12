@@ -9,4 +9,3 @@ export const baseApi = createApi({
   tagTypes: ["products", "product", "orders"],
 });
 
-console.log(baseApi.endpoints);

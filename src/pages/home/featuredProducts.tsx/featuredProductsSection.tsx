@@ -22,7 +22,7 @@ const FeaturedProductsSection = () => {
   });
   const products: IProduct[] = isSuccess && data.data;
   return (
-    <section className="overflow-hidden h-[3200px] md:h-[1165px] bg-red-400 relative">
+    <section className="overflow-hidden h-[3200px] md:h-[1165px] relative">
       <div className="section-bg-image h-full relative overflow-hidden ">
         <img src={sectionBg} alt="" className="w-full h-full" />
       </div>
