@@ -57,7 +57,10 @@ const ProductDetails = () => {
         )}
         {isSuccess && <ProductCard data={product} variant="lg"></ProductCard>}
         {isSuccess && (
-          <Card className="font-Untitled-Sans font-medium">{description}</Card>
+          <Card className="font-Untitled-Sans">
+            <h5 className="text-xl font-medium">Product Description</h5>
+            <p className="text-zinc-500 mt-2">{description}</p>
+          </Card>
         )}
         {isLoading && (
           <Card>

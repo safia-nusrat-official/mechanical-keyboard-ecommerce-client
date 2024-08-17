@@ -69,7 +69,7 @@ const FeaturedProductsSection = () => {
               ></ProductCard>
             ))}
           {isLoading &&
-            Array(6).map((skeleton) => (
+            Array(6).map(() => (
               <Card>
                 <Skeleton active></Skeleton>
               </Card>

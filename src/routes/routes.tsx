@@ -10,12 +10,13 @@ import ProductDetails from "@/pages/products/ProductDetails.tsx";
 import CreateProduct from "@/pages/dashboard/CreateProduct.tsx";
 import Checkout from "@/pages/payment/Checkout.tsx";
 import CheckoutSuccess from "@/pages/payment/CheckoutSuccess.tsx";
-import StripePayment from "@/pages/payment/StripePayment.tsx";
+import NotFoundPage from "@/pages/errors/NotFoundPage.tsx";
 
 const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
+    errorElement: <NotFoundPage />,
     children: [
       {
         path: "/",

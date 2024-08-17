@@ -1,4 +1,4 @@
-import { IoChevronForward, IoStar } from "react-icons/io5";
+import { IoChevronForward } from "react-icons/io5";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { ICart, IProduct } from "../../types";
 import { Rate } from "antd";
@@ -9,7 +9,7 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa6";
 import { useAppDispatch } from "@/redux/hook";
 import { ADD_TO_CART } from "@/redux/features/cart/cartSlice";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 
 const ProductCard = ({
   data,
@@ -22,11 +22,10 @@ const ProductCard = ({
   const { title, images, brand, rating, price, availableQuantity, _id } = data;
   const dispatch = useAppDispatch();
   const handleAddToCart = () => {
-    if(availableQuantity===0){
+    if (availableQuantity === 0) {
       toast.error("Product is out of stock!");
       return;
-    }
-    else if (orderedQuantity > availableQuantity) {
+    } else if (orderedQuantity > availableQuantity) {
       toast.error("Insufficient Quantity");
       return;
     } else if (!orderedQuantity) {
@@ -62,7 +61,10 @@ const ProductCard = ({
         >
           <IoChevronForward></IoChevronForward>
         </Link>
-        <Link to={`/products/${_id}`} className="mb-2 h-28 overflow-hidden">
+        <Link
+          to={`/products/${_id}`}
+          className="mb-2 h-28 relative overflow-hidden"
+        >
           <img
             src={cardThumbNail}
             alt=""
@@ -86,16 +88,16 @@ const ProductCard = ({
               <span className="text-xl">{price}</span>
             </div>
             {availableQuantity > 0 && (
-          <div className="flex items-center gap-2 text-zinc-500 font-[500]">
-            <span>In Stock</span>
-            <span className="text-xl">{availableQuantity}</span>
-          </div>
-        )}
-        {availableQuantity === 0 && (
-          <div className="flex items-center gap-2 text-zinc-500 font-[500]">
-            <span>Out of Stock</span>
-          </div>
-        )}
+              <div className="flex items-center gap-2 text-zinc-500 font-[500]">
+                <span>In Stock</span>
+                <span className="text-xl">{availableQuantity}</span>
+              </div>
+            )}
+            {availableQuantity === 0 && (
+              <div className="flex items-center gap-2 text-zinc-500 font-[500]">
+                <span>Out of Stock</span>
+              </div>
+            )}
           </div>
           <div className="grid w-full grid-cols-1 md:grid-cols-2 md:gap-2 gap-4 mt-2 h-10">
             <div className="grid grid-cols-3 font-semibold border-2 overflow-visible md:overflow-hidden rounded-md border-zinc-900 items-center">
@@ -217,16 +219,16 @@ const ProductCard = ({
             <span className="text-xl">{price}</span>
           </div>
           {availableQuantity > 0 && (
-          <div className="flex items-center gap-2 text-zinc-500 font-[500]">
-            <span>In Stock</span>
-            <span className="text-xl">{availableQuantity}</span>
-          </div>
-        )}
-        {availableQuantity === 0 && (
-          <div className="flex items-center gap-2 text-zinc-500 font-[500]">
-            <span>Out of Stock</span>
-          </div>
-        )}
+            <div className="flex items-center gap-2 text-zinc-500 font-[500]">
+              <span>In Stock</span>
+              <span className="text-xl">{availableQuantity}</span>
+            </div>
+          )}
+          {availableQuantity === 0 && (
+            <div className="flex items-center gap-2 text-zinc-500 font-[500]">
+              <span>Out of Stock</span>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>

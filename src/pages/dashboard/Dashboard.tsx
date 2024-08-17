@@ -16,7 +16,6 @@ import {
 import { useGetProductsQuery } from "@/redux/api/productApi";
 import { IProduct } from "@/types";
 import DashboardListItem from "./DashboardListItem";
-import { Toaster } from "sonner";
 import { Button } from "@/components/ui/button";
 import { GoPlusCircle } from "react-icons/go";
 import { Link } from "react-router-dom";
@@ -32,7 +31,7 @@ export default function Dashboard() {
     <Card className="md:p-10">
       <CardHeader>
         <CardTitle>Products</CardTitle>
-        <CardDescription className="flex justify-between">
+        <CardDescription className="flex md:flex-row flex-col gap-14 justify-between">
           <span>
             List of all the products which you can manage by updating
             information or deleting it.

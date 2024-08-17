@@ -1,6 +1,6 @@
 import { Badge, Divider, Layout, Menu } from "antd";
 import { useEffect, useState } from "react";
-import { FaBars, FaCartShopping } from "react-icons/fa6";
+import { FaCartShopping } from "react-icons/fa6";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import "./layout.css";
 import { useAppSelector } from "@/redux/hook";
@@ -38,6 +38,14 @@ const MainLayout = () => {
   const [collapsed, setCollapsed] = useState(true);
 
   useEffect(() => {
+    const handleBeforeUnload = (e:BeforeUnloadEvent) => {
+      const confirmationMessage = "Are you sure you want to leave? Your cart data will be lost.";
+      e.returnValue = confirmationMessage;
+      return confirmationMessage;
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
     if (location.pathname === "/") {
       setSelectedKeys("home");
     } else if (location.pathname === "/cart") {
@@ -49,6 +57,10 @@ const MainLayout = () => {
     } else {
       setSelectedKeys("");
     }
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
   }, [location.pathname]);
 
   return (
@@ -66,13 +78,22 @@ const MainLayout = () => {
           color: "#001F3F",
           fontFamily: "Untitled Sans",
         }}
-        className="border-[0.5px] border-zinc-200"
+        className="border-[0.5px] border-zinc-200 pl-4 pr-8 py-4 md:px-8"
       >
         <button
           className="mr-4 text-2xl md:hidden block"
           onClick={() => setCollapsed(!collapsed)}
         >
-          <FaBars></FaBars>
+          <div
+            className={`w-6 mb-2 relative h-[3px] transition-all bg-custom-primary rounded-md ${
+              collapsed ? "rotate-0 top-0" : "rotate-45 top-[3px]"
+            }`}
+          ></div>
+          <div
+            className={`w-6 h-[3px] relative transition-all bg-custom-primary rounded-md ${
+              collapsed ? "rotate-0 top-0" : "-rotate-45 -top-[8px] "
+            }`}
+          ></div>
         </button>
         <Link
           to="/"
@@ -125,18 +146,27 @@ const MainLayout = () => {
         </NavLink>
       </Header>
 
-      <Layout>
+      <Layout style={{ position: "relative" }}>
         <Sider
-          className="md:hidden block"
+          className="md:hidden font-Untitled-Sans block z-50 max-w-[320px] w-[320px]"
           collapsible
           collapsed={collapsed}
           trigger={null}
           breakpoint="lg"
           collapsedWidth="0"
+          width="100%"
           onCollapse={setCollapsed}
+          style={{
+            position: "fixed",
+            height: "100vh",
+            top: "65px",
+            width: "100% !important",
+            paddingTop: "1rem",
+          }}
         >
           <div className="demo-logo-vertical" />
           <Menu
+            onClick={() => setCollapsed(!collapsed)}
             theme="dark"
             mode="inline"
             selectedKeys={[selectedKeys]}

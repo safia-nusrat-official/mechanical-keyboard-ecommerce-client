@@ -1,4 +1,4 @@
-import { Dialog, DialogClose, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import emptyCart from "../../assets/images/empty-cart.png";
 import moment from "moment";
 import { Button } from "@/components/ui/button";

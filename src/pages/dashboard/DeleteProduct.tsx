@@ -15,7 +15,7 @@ import { toast } from "sonner";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 const DeleteProductDialog = ({ _id }: { _id: string }) => {
-  const [deleteProduct, { isSuccess }] = useDeleteProductMutation();
+  const [deleteProduct] = useDeleteProductMutation();
 
   const handleDelete = async () => {
     try {

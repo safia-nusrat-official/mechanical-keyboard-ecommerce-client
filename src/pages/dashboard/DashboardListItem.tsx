@@ -10,7 +10,6 @@ const DashboardListItem = ({ product }: { product: IProduct }) => {
 
   return (
     <TableRow>
-      
       <TableCell className="hidden sm:table-cell">
         <Link to={`/products/${_id}`}>
           <img
@@ -20,20 +19,21 @@ const DashboardListItem = ({ product }: { product: IProduct }) => {
           />
         </Link>
       </TableCell>
-      <TableCell className="font-medium">
-        <Link to={`/products/${_id}`}>{title}</Link>
+      <TableCell className="font-medium p-2">
+        <Link to={`/products/${_id}`}>
+          <p className="text-ellipsis overflow-hidden whitespace-nowrap w-[150px]">{title}</p>
+        </Link>
       </TableCell>
-      <TableCell>
+      <TableCell className="p-2">
         <Badge variant="outline">{brand}</Badge>
       </TableCell>
-      <TableCell>${price}</TableCell>
+      <TableCell  className="p-2">${price}</TableCell>
       <TableCell className="hidden text-center md:table-cell">
         {availableQuantity}
       </TableCell>
       <TableCell className="table-cell">
         <div className="text-xl gap-6 items-center flex">
           <DeleteProductDialog _id={_id}></DeleteProductDialog>
-
           <UpdateModal product={product}></UpdateModal>
         </div>
       </TableCell>

@@ -37,7 +37,7 @@ const ReviewsSection = () => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="text-center absolute md:top-8 top-0 md:p-20 p-4 w-full z-1">
+      <div className="text-center absolute md:top-8 top-0 md:p-20 px-8 py-12 w-full z-1">
         <SectionHeading
           text={"What Our Customers Say"}
           mode="light"
@@ -59,7 +59,7 @@ const ReviewsSection = () => {
           className="w-full px-10 custom-swiper"
         >
           {reviews.length &&
-            reviews.map((reviews, index) => (
+            reviews.map((reviews) => (
               <SwiperSlide>
                 <div className="flex text-center flex-col items-center border-[1px] border-[#ffffff4e] backdrop-blur-xl md:h-[23rem] rounded-md p-4 mb-16 shadow-sm">
                   <img

@@ -1,7 +1,6 @@
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,

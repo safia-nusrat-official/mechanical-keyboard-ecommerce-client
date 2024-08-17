@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -26,7 +25,6 @@ export const UpdateModal = ({ product }: { product: IProduct }) => {
     images,
     brand,
     price,
-    rating,
     availableQuantity,
     description,
   } = product;
@@ -38,9 +36,8 @@ export const UpdateModal = ({ product }: { product: IProduct }) => {
     },
   });
 
-  const [updateProduct, { isLoading }] = useUpdateProductMutation();
+  const [updateProduct] = useUpdateProductMutation();
   const [sumbmitComplete, setSubmitComplete] = useState(false);
-  console.log(formState);
 
   const handleUpdate = async (data: any) => {
     console.log(data);
@@ -49,7 +46,6 @@ export const UpdateModal = ({ product }: { product: IProduct }) => {
         toast.error("You must atleast add 1 image of your product!");
         return;
       }
-      console.log(newImgList.filter((image) => image.length > 0 && image));
       const productData: IProduct = {
         title: data.title,
         images: newImgList.filter((image) => image.length > 0 && image),
@@ -60,7 +56,6 @@ export const UpdateModal = ({ product }: { product: IProduct }) => {
         description: data.description,
         _id,
       };
-      console.log(productData);
       const updatedProduct = await updateProduct({
         data: productData,
         id: _id,
@@ -68,6 +63,7 @@ export const UpdateModal = ({ product }: { product: IProduct }) => {
       if (updatedProduct?.data) {
         setSubmitComplete(false);
         toast.success("Product updated successfully!");
+        
       }
     } catch (error) {
       console.log(error);
@@ -85,7 +81,7 @@ export const UpdateModal = ({ product }: { product: IProduct }) => {
           <CiPen className="text-xl" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] md:max-w-[800px] font-Untitled-Sans">
+      <DialogContent className="max-w-[280px] max-h-[400px] rounded-md md:m-0 mr-8 my-6 md:max-w-[800px] overflow-auto font-Untitled-Sans">
         <DialogHeader>
           <DialogTitle>Edit Product Details</DialogTitle>
           <DialogDescription>

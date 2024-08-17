@@ -1,6 +1,5 @@
 import { FormEventHandler, useEffect, useState } from "react";
 import {
-  PaymentElement,
   useStripe,
   useElements,
   CardElement,
@@ -31,7 +30,7 @@ const StripeCheckoutForm = ({
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:5000/api/create-payment-intent`, {
+    fetch(`https://mechanical-keyboard-ecommerce-server.vercel.app/api/create-payment-intent`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -75,9 +75,9 @@ const AllProducts = () => {
           <SearchBar handleSearch={handleSearch}></SearchBar>
 
           <div className="flex md:flex-row flex-col justify-between gap-2">
-            <div className="sort flex items-center font-medium">
-              <BsSortDown className="text-xl mr-2"></BsSortDown>
-              <span className="mr-4">Sort By:</span>
+            <div className="sort flex justify-between items-center font-medium">
+              <BsSortDown className="text-xl md:mr-2 mr-0"></BsSortDown>
+              <span className="md:mr-4 text-xs whitespace-break-spaces mr-0 md:text-xl">Sort By:</span>
               <Select
                 defaultValue="title"
                 style={{ width: 120 }}
@@ -125,12 +125,24 @@ const AllProducts = () => {
 
         <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
           {isLoading &&
-            Array(6)
+            Array(productsPerPage)
               .fill("item loading")
-              .map((item) => (
+              .map(() => (
                 <Card>
                   <CardContent className="p-6">
-                    <Skeleton active />
+                    <Skeleton.Avatar
+                      shape="square"
+                      size={"large"}
+                      style={{
+                        marginBottom: 16,
+                        height: "150px",
+                        width: "100%",
+                        borderRadius:"1.5rem"
+                      }}
+                      active
+                    />
+
+                    <Skeleton paragraph={{ rows: 3 }} />
                   </CardContent>
                 </Card>
               ))}

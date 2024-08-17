@@ -13,19 +13,19 @@ const ProductPagination = ({
   numberOfProducts,
   currentPage,
   productsPerPage,
-  setCurrentPage
+  setCurrentPage,
 }: {
   numberOfProducts: number;
-  currentPage:number
-  productsPerPage:number
+  currentPage: number;
+  productsPerPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }) => {
-    const numberOfPages = Math.ceil(numberOfProducts / productsPerPage);
-    console.log(numberOfPages)
+  const numberOfPages = Math.ceil(numberOfProducts / productsPerPage);
+  console.log(numberOfPages);
   const paginationLinks = Array(numberOfPages)
-    .fill(0)
+    .fill(1)
     .map((item, index) => (
-      <PaginationItem>
+      <PaginationItem key={item+index}>
         <PaginationLink
           className={`${currentPage === index + 1 && "text-black"}`}
           isActive={currentPage === index + 1}

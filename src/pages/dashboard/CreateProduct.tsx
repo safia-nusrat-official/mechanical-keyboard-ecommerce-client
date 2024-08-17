@@ -1,4 +1,4 @@
-import { Flex, Spin, Switch } from "antd";
+import { Spin } from "antd";
 import {
   Card,
   CardContent,
@@ -17,14 +17,13 @@ import { toast, Toaster } from "sonner";
 import { IProduct } from "@/types";
 import { Rate } from "antd";
 import { useNavigate } from "react-router-dom";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 const CreateProduct = () => {
   const {
     register,
     handleSubmit,
     reset,
-    formState: { isDirty, errors },
+    formState: { errors },
   } = useForm();
   const [imageList, setImageList] = useState<string[]>([]);
   const [createProduct, { isLoading }] = useCreateProductMutation();
@@ -297,7 +296,7 @@ const CreateProduct = () => {
 export default CreateProduct;
 
 const LoadingSpinner = () => {
-  const [auto, setAuto] = useState(false);
+  const [auto] = useState(false);
   const [percent, setPercent] = useState(-50);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 

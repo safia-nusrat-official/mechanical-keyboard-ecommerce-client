@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import HeroHeader from "./heroHeader";
 import CustomButton from "@/components/shared/CustomButton";
+import { Link } from "react-router-dom";
 
 const HeroContents = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,7 +21,9 @@ const HeroContents = () => {
           Enhance your typing experience with our range of high-quality
           mechanical keyboards.
         </p>
-        <CustomButton text={"Shop Now"}></CustomButton>
+        <Link to="/products">
+          <CustomButton text={"Shop Now"}></CustomButton>
+        </Link>
       </div>
     </div>
   );

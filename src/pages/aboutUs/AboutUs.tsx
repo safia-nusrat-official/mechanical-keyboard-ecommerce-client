@@ -34,23 +34,27 @@ const AboutUs = () => {
     },
   ];
   return (
+    /**
+     * aboutHeaderBg
+     * h=> About Us
+     * h=>
+     */
+
     <section className={`font-Untitled-Sans overflow-hidden relative`}>
-      <div className="relative w-full overflow-hidden h-full">
-        <div className="absolute">
-          <div className="overlay absolute  backdrop-blur-sm w-full h-full bg-[#00000065]"></div>
-          <img src={aboutHeaderBg} alt="" className="" />
-        </div>
-        <div className="w-full h-full relative text-center z-[8] flex flex-col items-center p-28 justify-center">
+      <div
+        className="relative bg-cover bg-fixed bg-center w-full overflow-hidden h-full"
+        style={{ backgroundImage: `url('${aboutHeaderBg}')` }}
+      >
+        <div className="w-full h-full bg-[#00000060] backdrop-blur-sm relative text-center z-[8] flex flex-col items-center md:p-28 py-10 px-6 justify-center">
           <h1
             data-aos="fade-right"
             data-aos-animation-duration="9000"
-            className="text-8xl mx-auto text-[#fff] selection:bg-[#ffffff66] font-semibold"
+            className="text-5xl md:text-8xl mx-auto text-[#fff] selection:bg-[#ffffff66] font-semibold"
           >
             About Us
           </h1>
           <p
             data-aos="zoom-out"
-            data-aos-delay="100"
             className="text-zinc-100 mt-2 my-4 max-w-[700px] selection:bg-[#ffffff66] "
           >
             Welcome to KeyWizards! We are your one-stop shop for all things
@@ -77,7 +81,7 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <div data-aos="fade-down" data-aos-delay="100">
+          <div data-aos="fade-down" data-aos-delay="100" className="md:mt-0 mt-8">
             <h3 className="text-3xl font-semibold">Our Mission and Vision</h3>
             <p className="text-zinc-600 mt-2">
               Our mission at KeyWizards is to provide top-notch mechanical
@@ -93,12 +97,15 @@ const AboutUs = () => {
         <img src={aboutBg} alt="" />
       </section>
 
-      <section className="md:p-20 text-center bg-white">
+      <section className="md:p-20 px-8 py-12 text-center bg-white">
         {/* <img src={quotes} alt="" className="w-4 absolute" /> */}
         <h3 className="text-3xl font-semibold" data-aos="fade-right">
           Meet the founders
         </h3>
-        <p  data-aos="fade-right" className="text-zinc-600 mt-2 mx-auto max-w-[700px]">
+        <p
+          data-aos="fade-right"
+          className="text-zinc-600 mt-2 mx-auto max-w-[700px]"
+        >
           Our team is a diverse group of individuals who share a common passion
           for mechanical keyboards. Each member brings unique skills and
           expertise, making KeyWizards a vibrant and dynamic place to work. Meet
@@ -107,14 +114,17 @@ const AboutUs = () => {
 
         <div className="grid md:grid-cols-4 mt-12 gap-12">
           {teamMembers.map((teamMember) => (
-            <div className="card overflow-hidden transition-all  rounded-full relative group hover:scale-105" data-aos="fade-left">
+            <div
+              className="card overflow-hidden transition-all  rounded-full relative group hover:scale-105"
+              data-aos="fade-left"
+            >
               <img
                 src={teamMember.image}
                 alt=""
                 className="h-full object-cover"
               />
-              <div className="overlay w-full h-full absolute bg-gradient-to-t from-black to-transparent bottom-0 transition-all opacity-0 group-hover:opacity-100"></div>
-              <div className="w-full h-full pb-8 px-4 absolute text-white flex flex-col justify-end -bottom-28 group-hover:bottom-0 transition-all">
+              <div className="overlay w-full h-full absolute bg-gradient-to-t from-black to-transparent bottom-0 transition-all opacity-100 md:opacity-0 group-hover:opacity-100"></div>
+              <div className="w-full h-full pb-8 md:px-4 px-12 absolute text-white flex flex-col justify-end md:-bottom-28 group-hover:bottom-0 bottom-0 transition-all">
                 <span className="font-medium cursor-pointer">
                   {teamMember.name}
                 </span>
@@ -133,11 +143,11 @@ const AboutUs = () => {
       >
         <div
           className="
-           bg-[#0000007d] backdrop-blur-sm text-[#ffffffe0] py-36 px-20"
+           bg-[#0000007d] backdrop-blur-sm text-[#ffffffe0] md:py-36 px-8 md:px-20 py-10"
         >
-          <BiSolidQuoteSingleLeft className="text-8xl relative" />
+          <BiSolidQuoteSingleLeft className="md:text-8xl text-6xl relative" />
           <h3
-            className="text-2xl max-w-[700px] relative left-20 font-serif -top-8 text-center font-medium"
+            className="text-2xl max-w-[700px] relative md:left-20 left-0 font-serif top-0 md:-top-8 text-center font-medium"
             data-aos="zoom-out"
             data-aos-animation-duration="4000"
           >
@@ -146,8 +156,8 @@ const AboutUs = () => {
             us. What started as a search for the perfect keystroke became a
             mission to bring the joy of mechanical keyboards to everyone.
           </h3>
-          <BiSolidQuoteSingleLeft className="text-8xl float-right -top-28 -left-20 relative rotate-180" />
-          <div className="text-center" data-aos="fade-down">
+          <BiSolidQuoteSingleLeft className="text-6xl md:text-8xl float-right -top-8 md:-top-28 left-0 md:-left-20 relative rotate-180" />
+          <div className="text-center md:mt-0 mt-12" data-aos="fade-down">
             <i>- Ethan Matthews, Founder and CEO</i>
           </div>
         </div>

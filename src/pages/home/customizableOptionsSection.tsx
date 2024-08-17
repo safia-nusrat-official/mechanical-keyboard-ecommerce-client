@@ -17,9 +17,9 @@ const CustomizableOptionsSection = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 mb-6 border-[1px] border-zinc-200 rounded-md p-6 bg-white justify-between gap-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 mb-6 border-[1px] border-zinc-200 rounded-md p-6 bg-white justify-between gap-8 md:gap-20">
         <div data-aos="zoom-out" className="flex flex-col text-left">
-          <img src={customOptions1} className="w-[18rem] h-[14rem]" alt="" />
+          <img src={customOptions1} className="w-[18rem] h-fit md:h-[14rem]" alt="" />
           <div className="mt-6">
             <h5 className="text-zinc-900 font-medium text-lg">Keycap Sets</h5>
             <p className="text-zinc-500 text-balance">
@@ -31,7 +31,7 @@ const CustomizableOptionsSection = () => {
           </div>
         </div>
         <div data-aos="zoom-out" className="flex flex-col text-right items-end">
-          <img src={customOptions2} className="w-[20rem] h-[14rem]" alt="" />
+          <img src={customOptions2} className="md:w-[20rem] h-fit md:h-[14rem]" alt="" />
           <div className="text-right mt-6">
             <h5 className="text-zinc-900 font-medium text-lg">
               Backlighting and RGB
