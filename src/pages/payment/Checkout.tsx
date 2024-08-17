@@ -185,16 +185,16 @@ const CartDetails = ({
             </h4>
           </div>
         ))}
-      <div className="grid md:grid-cols-2">
-        <div>
+      <div className="flex flex-row justify-between">
+        <div className="border-r border-zinc-300 pr-[12px] border-spacing-0 md:pr-0 md:border-none">
           <CardDescription>Total Price</CardDescription>
-          <CardTitle className="text-4xl mt-2">
+          <CardTitle className="text-2xl md:text-4xl mb-2 md:mb-0 mt-0 md:mt-2">
             ${totalPrice.toFixed(2)}
           </CardTitle>
         </div>
-        <div>
+        <div className="text-right">
           <CardDescription>Total Item Quantity</CardDescription>
-          <CardTitle className="text-4xl mt-2">{totalItems}</CardTitle>
+          <CardTitle className="text-2xl  md:text-4xl mb-2 md:mb-0 mt-0 md:mt-2">{totalItems}</CardTitle>
         </div>
       </div>
     </Card>

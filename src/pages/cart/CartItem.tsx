@@ -30,17 +30,24 @@ const CartItem = ({ data: cart }: { data: ICart }) => {
       </TableCell>
       <TableCell className="cursor-pointer p-0">
         <Link to={`/products/${productId}`}>
-          <h3 className="font-[600] text-ellipsis overflow-hidden max-w-[100px] whitespace-nowrap text-lg md:text-xl text-zinc-800 mt-2">
+          <h3 className="font-[600] text-ellipsis overflow-hidden max-w-[100px] whitespace-nowrap text-lg md:text-xl text-zinc-800 mt-2 md:max-w-fit">
             {title}
           </h3>
           <span className="font-[500] text-zinc-500 mt-2">{brand}</span>
           <div className="mb-2 mt-0 md:mt-2 flex items-center gap-2 font-[500]">
-            {rating} <FaStar className="md:hidden block text-yellow-500"></FaStar> <Rate className="md:block hidden" allowHalf disabled defaultValue={rating} />
+            {rating}{" "}
+            <FaStar className="md:hidden block text-yellow-500"></FaStar>{" "}
+            <Rate
+              className="md:block hidden"
+              allowHalf
+              disabled
+              defaultValue={rating}
+            />
           </div>
         </Link>
       </TableCell>
       <TableCell className="text-center min-w-[150px]">
-        <div className="grid grid-cols-3 md:scale-0 scale-75 font-semibold border-2 overflow-visible md:overflow-hidden rounded-md border-zinc-900 items-center">
+        <div className="grid grid-cols-3 md:scale-100 scale-75 font-semibold border-2 overflow-visible md:overflow-hidden rounded-md border-zinc-900 items-center">
           <Button
             className="rounded-none font-[500] bg-transparent text-zinc-900 text-[1.5rem] border-r-2 border-zinc-900 hover:bg-zinc-900 hover:text-white transition:all"
             onClick={() =>

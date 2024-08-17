@@ -25,7 +25,7 @@ const Cart = () => {
       
       {cartItems.length > 0 && (
         <div className="">
-          <Card className="">
+          <Card className="md:hidden block">
             <CardHeader className="pb-2">
               <CardDescription>Total Price</CardDescription>
               <CardTitle className="text-4xl">

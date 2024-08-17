@@ -259,12 +259,14 @@ const ContactUs = () => {
         <h3
           className="text-4xl mb-4 text-custom-primary font-semibold"
           data-aos="fade-left"
+          data-aos-delay={400}
         >
           Stay Connected
         </h3>
 
         <div className="flex md:flex-row flex-col justify-between gap-0 md:gap-14 mb-6">
-          <div>
+          <div data-aos="fade-left"
+          data-aos-delay={500}>
             <h4 className="text-xl text-zinc-800 font-medium">
               Follow Us On Socials
             </h4>
@@ -274,6 +276,8 @@ const ContactUs = () => {
               special offers.
             </p>
           </div>
+          <div  data-aos="fade-left"
+          data-aos-delay={400}>
           <ul className="flex md:flex-row flex-col mt-6 justify-between gap-4">
             <li>
               <a
@@ -313,12 +317,14 @@ const ContactUs = () => {
               </a>
             </li>
           </ul>
+          </div>
         </div>
 
         <p className="text-zinc-500 text-xl mb-6">Or</p>
 
         <div className="flex md:flex-row flex-col justify-between gap-4 md:gap-14 mb-6">
-          <div>
+          <div  data-aos="fade-left"
+          data-aos-delay={400}>
             <h4 className="text-xl text-zinc-800 font-medium">
               Subscribe to Our Newsletter
             </h4>
@@ -328,7 +334,8 @@ const ContactUs = () => {
               keyboards, delivered straight to your inbox.
             </p>
           </div>
-          <div className="flex md:mt-0 mt-4 md:flex-row flex-col w-full md:gap-0 gap-4 max-w-sm items-center space-x-2">
+          <div  data-aos="fade-left"
+          data-aos-delay={400} className="flex md:mt-0 mt-4 md:flex-row flex-col w-full md:gap-0 gap-4 max-w-sm items-center space-x-2">
             <Input type="email" placeholder="Email" />
             <Button type="submit">Subscribe</Button>
           </div>
@@ -366,10 +373,12 @@ const ContactUs = () => {
         <h3
           className="text-4xl mb-2 text-custom-primary font-semibold"
           data-aos="zoom-out"
+          data-aos-delay={500}
         >
           Contact Form
         </h3>
-        <p className="md:w-[400px] mx-auto mb-8 text-zinc-500">
+        <p data-aos="fade-up"
+          data-aos-delay={500} className="md:w-[400px] mx-auto mb-8 text-zinc-500">
           Can’t find what you’re looking for? Fill out the contact form below,
           and we’ll get back to you as soon as possible
         </p>

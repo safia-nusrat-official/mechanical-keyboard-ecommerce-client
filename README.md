@@ -1,6 +1,9 @@
+![KeyWizards](./public/favicon.jpg)
+
 # KeyWizards ⌨️
 
-An e-commerce application exclusively for mecahnical keyboards built with React-Redux-Tailwind
+Welcome to KeyWizards, your ultimate destination for mechanical keyboards! This e-commerce platform is designed to provide an exceptional browsing experience with an intuitive interface, a robust cart system, and efficient product management.
+
 
 [![Live Preview Link](https://img.shields.io/badge/Live_Preview_Link-blue)](https://mechanical-keyboard-ecommerce-server.vercel.app/)
 [![Live Server Link](https://img.shields.io/badge/Live_Server_Link-red)](https://mechanical-keyboard-ecommerce-server.vercel.app/)

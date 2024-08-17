@@ -11,7 +11,11 @@ import { useFormContext } from "react-hook-form";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { FaStripe } from "react-icons/fa6";
 
-export const UserDetailsForm = ({setPaymentMethod}:{setPaymentMethod: React.Dispatch<React.SetStateAction<"cash" | "stripe">>}) => {
+export const UserDetailsForm = ({
+  setPaymentMethod,
+}: {
+  setPaymentMethod: React.Dispatch<React.SetStateAction<"cash" | "stripe">>;
+}) => {
   const {
     register,
     formState: { errors },
@@ -104,8 +108,10 @@ export const UserDetailsForm = ({setPaymentMethod}:{setPaymentMethod: React.Disp
           </label>
           <RadioGroup
             defaultValue="cash"
-            onValueChange={(value:"cash"|"stripe")=>setPaymentMethod(value)}
-            className="grid grid-cols-2 gap-4 font-Untitled-Sans"
+            onValueChange={(value: "cash" | "stripe") =>
+              setPaymentMethod(value)
+            }
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 font-Untitled-Sans"
           >
             <div className="">
               <RadioGroupItem value="cash" id="cash" className="peer sr-only" />
