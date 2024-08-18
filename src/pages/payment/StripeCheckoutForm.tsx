@@ -1,9 +1,5 @@
 import { FormEventHandler, useEffect, useState } from "react";
-import {
-  useStripe,
-  useElements,
-  CardElement,
-} from "@stripe/react-stripe-js";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { Button } from "@/components/ui/button";
 import "./stripe.css";
 import { useAppDispatch, useAppSelector } from "@/redux/hook";
@@ -30,13 +26,16 @@ const StripeCheckoutForm = ({
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetch(`https://mechanical-keyboard-ecommerce-server.vercel.app/api/create-payment-intent`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ totalPrice: totalPrice.toFixed(2) }),
-    })
+    fetch(
+      `https://mechanical-keyboard-ecommerce-server.vercel.app/api/create-payment-intent`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ totalPrice: totalPrice.toFixed(2) }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret))
       .catch((err) => console.log(err));
@@ -77,8 +76,8 @@ const StripeCheckoutForm = ({
           },
         },
       });
-    
-      if (paymentIntent?.status === "succeeded") {
+
+    if (paymentIntent?.status === "succeeded") {
       const orderPlaced = await postOrder(order);
       if (orderPlaced?.data) {
         setStripeCheckout(false);

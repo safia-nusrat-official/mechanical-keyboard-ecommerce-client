@@ -11,7 +11,6 @@ const ServiceSection = () => {
       <SectionHeading
         mode="dark"
         text="What We Offer"
-        hideInSm={false}
         animateFrom="right"
         showIn={["md", "sm"]}
       ></SectionHeading>
@@ -55,7 +54,6 @@ const ServiceSection = () => {
       <div className="flex flex-col lg:flex-col w-full lg:w-1/2">
         <SectionHeading
           text={"What We Offer"}
-          hideInSm={true}
           mode="dark"
           animateFrom="left"
           showIn={["lg"]}
@@ -124,15 +122,14 @@ const ServiceSection = () => {
             data-aos-delay="100"
             className="flex flex-col"
           >
-          <div className="flex gap-2 items-center text-lg">
-            <GoCheckbox className=""></GoCheckbox>
-            <span className="font-medium">Fast and Secure Shipping</span>
-          </div>
-          <p className="ml-6 text-body">
-            Enjoy fast and secure shipping options to ensure your mechanical
-            keyboard arrives safely and on time.
-          </p>
-        
+            <div className="flex gap-2 items-center text-lg">
+              <GoCheckbox className=""></GoCheckbox>
+              <span className="font-medium">Fast and Secure Shipping</span>
+            </div>
+            <p className="ml-6 text-body">
+              Enjoy fast and secure shipping options to ensure your mechanical
+              keyboard arrives safely and on time.
+            </p>
           </li>
         </ul>
       </div>

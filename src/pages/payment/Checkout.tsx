@@ -48,7 +48,6 @@ export default function Checkout() {
 
       if (paymentMethod === "cash") {
         const orderPlaced = await postOrder(order);
-        console.log(orderPlaced);
         if (orderPlaced?.data) {
           toast.success("Order placed successfully!");
           dispatch(CLEAR_CART());

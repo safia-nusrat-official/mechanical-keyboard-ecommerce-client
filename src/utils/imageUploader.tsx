@@ -21,7 +21,6 @@ export const ImageUploader = ({
   const [fileList, setFileList] = useState<UploadFile[]>(imageList);
   const handleChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
     setFileList(newFileList);
-    console.log(fileList);
     setNewImgList(newFileList.map((img) => img.url) as string[]);
   };
 
@@ -38,7 +37,6 @@ export const ImageUploader = ({
     const file: File = options?.file;
     const apiKey = import.meta.env.VITE_IMGBB_API;
     const formData = new FormData();
-    console.log(file, apiKey);
     formData.append("image", file);
     formData.append("key", apiKey);
     try {
@@ -57,16 +55,13 @@ export const ImageUploader = ({
             uid: `${fileList.length + 1}`,
           },
         ];
-        console.log(newFileList);
         setFileList(newFileList.filter((img) => img.url && img.url.length > 0));
-        console.log(fileList);
 
         setNewImgList(
           newFileList
             .filter((img) => img.url && img.url.length > 0) // to make sure img url is not undefined or an empty string ""
             .map((img) => img.url) as string[]
         );
-        console.log(images);
       } else {
         console.log(`Image upload failed.`);
       }

@@ -30,7 +30,6 @@ const FeaturedProductsSection = () => {
         <SectionHeading
           text={"Top Picks for Enthusiasts"}
           mode="light"
-          hideInSm="both"
           animateFrom="right"
         ></SectionHeading>
         <p
@@ -42,20 +41,22 @@ const FeaturedProductsSection = () => {
         </p>
         <div className="hidden md:grid-cols-2 md:grid lg:hidden gap-6">
           {products.length &&
-            products.slice(0, 4).map((product) => (
-              <ProductCard
-                data={product}
-                key={product._id}
-                variant="md"
-              ></ProductCard>
-            ))}
+            products
+              .slice(0, 4)
+              .map((product) => (
+                <ProductCard
+                  data={product}
+                  key={product._id}
+                  variant="md"
+                ></ProductCard>
+              ))}
           {isLoading &&
             Array(4).map(() => (
               <Card>
                 <Skeleton active></Skeleton>
               </Card>
             ))}
-        </div> 
+        </div>
         <div className="grid lg:grid-cols-3 md:hidden lg:grid grid-cols-1 gap-6">
           {products.length &&
             products.map((product) => (

@@ -8,5 +8,3 @@ export const baseApi = createApi({
   endpoints: () => ({}),
   tagTypes: ["products", "product", "orders"],
 });
-
-console.log(`${import.meta.env.VITE_SERVER_URL}/api`)

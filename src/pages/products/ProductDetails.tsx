@@ -24,7 +24,6 @@ const ProductDetails = () => {
     page: 1,
   });
   const product = (isSuccess && data.data) as IProduct;
-  console.log(product, isLoading);
   const { images: productImages, description } = product;
 
   return (
@@ -35,7 +34,6 @@ const ProductDetails = () => {
           <Swiper
             spaceBetween={24}
             slidesPerView={1}
-            onSlideChange={() => console.log("slide change")}
             pagination={true}
             modules={[Navigation, Pagination]}
             navigation={true}

@@ -1,17 +1,15 @@
 const SectionHeading = ({
   text,
   mode = "light",
-  hideInSm = "both",
   animateFrom = undefined,
   center = false,
-  showIn=["md", "lg", "sm"]
+  showIn = ["all"],
 }: {
   text: string;
   mode?: "light" | "dark";
-  hideInSm?: boolean|"both";
   animateFrom?: "left" | "right";
   center?: boolean;
-  showIn?:("md"|"sm"|"lg")[];
+  showIn?: ("md" | "sm" | "lg" | "all")[];
 }) => {
   return (
     <h2
@@ -20,7 +18,11 @@ const SectionHeading = ({
       className={`font-[600] text-3xl md:text-5xl md:mt-0 lg:text-6xl md:mb-0 mb-4  ${
         mode === "light" ? "text-[#fefefe]" : "text-custom-primary"
       } 
-      ${showIn.includes("md")&&showIn.includes("sm") ? "md:block block lg:hidden":"md:hidden hidden lg:block"}
+      ${
+        showIn.includes("all") ? "block": showIn.includes("md") && showIn.includes("sm")
+          ? "md:block block lg:hidden"
+          : "md:hidden hidden lg:block"
+      }
       ${center ? "text-center" : ""}
       `}
     >

@@ -40,7 +40,6 @@ export const UpdateModal = ({ product }: { product: IProduct }) => {
   const [sumbmitComplete, setSubmitComplete] = useState(false);
 
   const handleUpdate = async (data: any) => {
-    console.log(data);
     try {
       if (newImgList.length === 0) {
         toast.error("You must atleast add 1 image of your product!");

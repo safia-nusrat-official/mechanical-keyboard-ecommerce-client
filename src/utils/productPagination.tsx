@@ -40,7 +40,6 @@ const ProductPagination = ({
         <PaginationItem>
           <PaginationPrevious
             onClick={() => {
-              console.log(paginationLinks[currentPage - 2]);
               if (paginationLinks[currentPage - 2]) {
                 setCurrentPage(currentPage - 1);
               }
@@ -60,11 +59,9 @@ const ProductPagination = ({
           <PaginationNext
             className=""
             onClick={() => {
-              console.log(paginationLinks[currentPage + 1]);
               if (paginationLinks[currentPage]) {
                 setCurrentPage(currentPage + 1);
               }
-              console.log(currentPage);
             }}
           />
         </PaginationItem>

@@ -43,7 +43,6 @@ const ReviewsSection = () => {
         <SectionHeading
           text={"What Our Customers Say"}
           mode="light"
-          hideInSm="both"
           center={true}
         ></SectionHeading>
         <p className="text-zinc-50 text-[16px] max-w-[32rem] mx-auto mb-8 text-center">
