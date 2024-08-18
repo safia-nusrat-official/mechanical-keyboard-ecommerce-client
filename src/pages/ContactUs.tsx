@@ -57,7 +57,7 @@ const ContactUs = () => {
         >
           Get in Touch
         </h3>
-        <div className="flex gap-14 h-fit justify-between overflow-hidden md:flex-row flex-col items-center">
+        <div className="flex lg:gap-14 md:gap-8 h-fit justify-between overflow-hidden md:flex-row flex-col items-center">
           <div
             data-aos="fade-right"
             data-aos-animation-duration="5000"
@@ -85,13 +85,13 @@ const ContactUs = () => {
             </ul>
           </div>
           <div data-aos="zoom-out" data-aos-animation-duration="5000" className="md:order-2 order-1">
-            <img src={customerSupport} alt="" className="max-w-[250px] md:max-w-[450px]" />
+            <img src={customerSupport} alt="" className="max-w-[250px] lg:max-w-[450px]" />
           </div>
         </div>
 
         <div className="flex h-fit md:gap-14 gap-4 justify-between overflow-hidden md:flex-row flex-col items-center">
           <div data-aos="zoom-out" data-aos-animation-duration="5000">
-            <img src={salesInquiry} alt="" className="max-w-[250px] md:max-w-[400px]" />
+            <img src={salesInquiry} alt="" className="max-w-[250px] lg:max-w-[400px]" />
           </div>
 
           <div
@@ -164,14 +164,14 @@ const ContactUs = () => {
         </div>
       </section>
 
-      <section className="md:p-20 p-8 md:gap-14 grid gap-4 md:grid-cols-2 grid-cols-1">
+      <section className="md:p-20 p-8 md:gap-14 grid gap-4 lg:grid-cols-2 grid-cols-1">
         <div>
           <img src={FAQs} alt="" />
         </div>
 
         <div className="flex flex-col">
           <h3
-            className="text-3xl mb-4 text-custom-primary font-semibold"
+            className="text-4xl mb-4 text-custom-primary font-semibold"
             data-aos="fade-left"
           >
             Frequently Asked Questions
@@ -264,7 +264,7 @@ const ContactUs = () => {
           Stay Connected
         </h3>
 
-        <div className="flex md:flex-row flex-col justify-between gap-0 md:gap-14 mb-6">
+        <div className="flex lg:flex-row flex-col justify-between gap-0 md:gap-14 mb-6">
           <div data-aos="fade-left"
           data-aos-delay={500}>
             <h4 className="text-xl text-zinc-800 font-medium">
@@ -278,18 +278,18 @@ const ContactUs = () => {
           </div>
           <div  data-aos="fade-left"
           data-aos-delay={400}>
-          <ul className="flex md:flex-row flex-col mt-6 justify-between gap-4">
+          <ul className="flex md:flex-row flex-col mt-6 md:mt-0 justify-between gap-4">
             <li>
               <a
                 href="https://www.facebook.com/"
-                className="border-[1px] md:w-12 w-52 box-content rounded-full p-2 bg-white transition-all duration-500 flex items-center ease-in-out hover:w-52 overflow-hidden group"
+                className="border-[1px] lg:w-12 w-52 box-content rounded-full p-2 bg-white transition-all duration-500 flex items-center ease-in-out hover:w-52 overflow-hidden group"
               >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png"
                   alt=""
                   className="w-12"
                 />
-                <p className="md:opacity-0 cursor-pointer text-blue-700 px-2 transition-opacity duration-500 delay-300 hover:underline underline md:no-underline underline-offset-2 group-hover:opacity-100 opacity-100  font-medium">
+                <p className="lg:opacity-0 cursor-pointer text-blue-700 px-2 transition-opacity duration-500 delay-300 hover:underline underline lg:no-underline underline-offset-2 group-hover:opacity-100 opacity-100  font-medium">
                   fb.com/keywizards
                 </p>
               </a>
@@ -297,10 +297,10 @@ const ContactUs = () => {
             <li>
               <a
                 href="https://www.instagram.com/"
-                className="border-[1px] md:w-12 w-52 box-content rounded-full p-2 bg-white transition-all duration-500 flex items-center ease-in-out hover:w-40 overflow-hidden group"
+                className="border-[1px] lg:w-12 max-w-52 lg:p-2 md:pr-16 box-content rounded-full p-2 bg-white transition-all duration-500 flex items-center ease-in-out hover:w-40 overflow-hidden group"
               >
                 <img src={instagram} alt="" className="w-12" />
-                <p className="md:opacity-0 cursor-pointer text-pink-700 px-2 transition-opacity duration-500 delay-300 hover:underline underline-offset-2 group-hover:opacity-100 opacity-100 underline md:no-underline font-medium">
+                <p className="lg:opacity-0 cursor-pointer text-pink-700 px-2 transition-opacity duration-500 delay-300 hover:underline underline-offset-2 group-hover:opacity-100 opacity-100 underline lg:no-underline font-medium">
                   @keywizards
                 </p>
               </a>
@@ -308,10 +308,10 @@ const ContactUs = () => {
             <li>
               <a
                 href="https://twitter.com/"
-                className="border-[1px] md:w-12 w-52 box-content rounded-full p-2 bg-white transition-all duration-500 flex items-center ease-in-out hover:w-40 overflow-hidden group"
+                className="border-[1px] lg:w-12 max-w-52 lg:p-2 md:pr-16 box-content rounded-full p-2 bg-white transition-all duration-500 flex items-center ease-in-out hover:w-40 overflow-hidden group"
               >
                 <img src={twitter} alt="" className="w-12" />
-                <p className="md:opacity-0 cursor-pointer text-zinc-700 px-2 transition-opacity duration-500 delay-300 hover:underline underline-offset-2 group-hover:opacity-100 opacity-100 font-medium underline md:no-underline ">
+                <p className="lg:opacity-0 cursor-pointer text-zinc-700 px-2 transition-opacity duration-500 delay-300 hover:underline underline-offset-2 group-hover:opacity-100 opacity-100 font-medium underline lg:no-underline ">
                   @keywizards
                 </p>
               </a>

@@ -4,21 +4,23 @@ const SectionHeading = ({
   hideInSm = "both",
   animateFrom = undefined,
   center = false,
+  showIn=["md", "lg", "sm"]
 }: {
   text: string;
   mode?: "light" | "dark";
   hideInSm?: boolean|"both";
   animateFrom?: "left" | "right";
   center?: boolean;
+  showIn?:("md"|"sm"|"lg")[];
 }) => {
   return (
     <h2
       data-aos={`${animateFrom && `fade-${animateFrom}`}`}
       data-aos-delay="500"
-      className={`font-[600] text-4xl md:mt-0  md:text-6xl mb-6  ${
+      className={`font-[600] text-3xl md:text-5xl md:mt-0 lg:text-6xl md:mb-0 mb-4  ${
         mode === "light" ? "text-[#fefefe]" : "text-custom-primary"
       } 
-      ${hideInSm==="both" ? "block" : hideInSm? "md:block hidden" : "md:hidden block"}
+      ${showIn.includes("md")&&showIn.includes("sm") ? "md:block block lg:hidden":"md:hidden hidden lg:block"}
       ${center ? "text-center" : ""}
       `}
     >

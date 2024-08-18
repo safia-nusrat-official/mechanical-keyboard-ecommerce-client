@@ -17,7 +17,7 @@ const HeroContents = () => {
     <div className="hero-content-container text-center absolute md:top-8 top-0 md:p-10 p-4 w-full z-1">
       <HeroHeader></HeroHeader>
       <div className={`hero-text ${isVisible ? "fade-in" : ""}`}>
-        <p className={` mt-4 text-lg`}>
+        <p className={`md:max-w-[450px] mx-auto max-w-fit mt-4 text-lg`}>
           Enhance your typing experience with our range of high-quality
           mechanical keyboards.
         </p>

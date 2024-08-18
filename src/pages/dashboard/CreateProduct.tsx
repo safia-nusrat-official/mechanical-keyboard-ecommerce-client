@@ -27,12 +27,9 @@ const CreateProduct = () => {
   } = useForm();
   const [imageList, setImageList] = useState<string[]>([]);
   const [createProduct, { isLoading }] = useCreateProductMutation();
-  console.log(isLoading);
   const navigate = useNavigate();
-  console.log(imageList);
 
   const handleCreateProduct = async (data: any) => {
-    console.log(imageList);
     try {
       if (imageList.length === 0 && !data.image) {
         toast.error("You must atleast add 1 image of your product!");
@@ -50,8 +47,6 @@ const CreateProduct = () => {
       const productCreated = await createProduct({
         data: product,
       });
-      console.log(productCreated);
-      console.log(isLoading);
 
       if (productCreated?.data) {
         toast.success("Product created successfully!");
@@ -70,7 +65,7 @@ const CreateProduct = () => {
       }
     } catch (err) {
       toast.error((err as { message?: string })?.message || "Unexpected Error");
-      console.log(err);
+
     }
   };
 

@@ -1,5 +1,5 @@
 import SectionHeading from "@/components/shared/SectionHeading";
-import "./reviewsSection.css"
+import "./reviewsSection.css";
 import reviews from "../../../../public/reviews.json";
 import { Swiper, SwiperSlide } from "swiper/react";
 import testimonialBg from "../../../assets/images/testimonial-bg.jpg";
@@ -14,9 +14,11 @@ const ReviewsSection = () => {
   const [slidesPerView, setSlidesPerView] = useState(3);
   useEffect(() => {
     function handleResize() {
-      if (window.innerWidth > 320) {
+      if (window.innerWidth > 960) {
         setSlidesPerView(3);
-      } else {
+      } else if (960 >= window.innerWidth && window.innerWidth > 536) {
+        setSlidesPerView(2);
+      } else if (window.innerWidth <= 536) {
         setSlidesPerView(1);
       }
     }
@@ -51,7 +53,6 @@ const ReviewsSection = () => {
         <Swiper
           spaceBetween={24}
           slidesPerView={slidesPerView}
-          onSlideChange={() => console.log("slide change")}
           pagination={true}
           loop={true}
           modules={[Navigation, Pagination]}
@@ -75,7 +76,7 @@ const ReviewsSection = () => {
                     defaultValue={reviews.rating}
                     allowHalf
                     style={{
-                      color:"#fff"
+                      color: "#fff",
                     }}
                     allowClear
                   ></Rate>

@@ -76,6 +76,7 @@ module.exports = {
         "Untitled-Sans": ["Untitled Sans"],
       },
     },
+    
   },
   plugins: [require("tailwindcss-animate")],
 };

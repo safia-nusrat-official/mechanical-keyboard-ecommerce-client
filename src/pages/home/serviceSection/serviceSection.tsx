@@ -7,12 +7,15 @@ import { PiHeadset } from "react-icons/pi";
 Aos.init();
 const ServiceSection = () => {
   return (
-    <section className="md:p-20 md:gap-8 items-center overflow-hidden p-10 flex md:flex-row flex-col justify-between">
-      <SectionHeading mode="dark" text="What We Offer" hideInSm={false} animateFrom="right"></SectionHeading>
-      <div
-        data-aos=""
-        className="collage gap-4 md:gap-6 grid font-medium grid-cols-2 "
-      >
+    <section className="md:p-20 md:gap-8 items-center overflow-hidden p-10 flex lg:flex-row md:flex-col flex-col justify-between">
+      <SectionHeading
+        mode="dark"
+        text="What We Offer"
+        hideInSm={false}
+        animateFrom="right"
+        showIn={["md", "sm"]}
+      ></SectionHeading>
+      <div className="collage gap-4 md:gap-6 grid font-medium grid-cols-2 lg:grid-cols-2 md:grid-cols-4">
         <div
           data-aos="zoom-out"
           className="p-6 flex flex-col items-center text-center justify-center col-span-1 row-span-1 aspect-square rounded-md bg-blue-300
@@ -49,16 +52,22 @@ const ServiceSection = () => {
         </div>
       </div>
 
-      <div className="flex flex-col w-full md:w-1/2">
-        <SectionHeading text={"What We Offer"} hideInSm={true} mode="dark" animateFrom="left"></SectionHeading>
-        <ul className="flex flex-col gap-4">
+      <div className="flex flex-col lg:flex-col w-full lg:w-1/2">
+        <SectionHeading
+          text={"What We Offer"}
+          hideInSm={true}
+          mode="dark"
+          animateFrom="left"
+          showIn={["lg"]}
+        ></SectionHeading>
+        <ul className="lg:flex flex md:grid md:grid-cols-2  md:mt-0 mt-6 lg:mt-0 flex-col gap-4">
           <li
             data-aos-offset="100"
             data-aos="fade-left"
             data-aos-animation-duration="10000"
             data-aos-easing="ease-in-out"
-              data-aos-once="false"
-              data-aos-delay="100"
+            data-aos-once="false"
+            data-aos-delay="100"
             className="flex flex-col mt-4"
           >
             <div className="flex gap-2 items-center text-lg">
@@ -115,14 +124,15 @@ const ServiceSection = () => {
             data-aos-delay="100"
             className="flex flex-col"
           >
-            <div className="flex gap-2 items-center text-lg">
-              <GoCheckbox className=""></GoCheckbox>
-              <span className="font-medium">Fast and Secure Shipping</span>
-            </div>
-            <p className="ml-6 text-body">
-              Enjoy fast and secure shipping options to ensure your mechanical
-              keyboard arrives safely and on time.
-            </p>
+          <div className="flex gap-2 items-center text-lg">
+            <GoCheckbox className=""></GoCheckbox>
+            <span className="font-medium">Fast and Secure Shipping</span>
+          </div>
+          <p className="ml-6 text-body">
+            Enjoy fast and secure shipping options to ensure your mechanical
+            keyboard arrives safely and on time.
+          </p>
+        
           </li>
         </ul>
       </div>

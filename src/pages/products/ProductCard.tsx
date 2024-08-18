@@ -63,7 +63,7 @@ const ProductCard = ({
         </Link>
         <Link
           to={`/products/${_id}`}
-          className="mb-2 h-28 relative overflow-hidden"
+          className="mb-2 h-28 bg-red-400 relative overflow-hidden"
         >
           <img
             src={cardThumbNail}

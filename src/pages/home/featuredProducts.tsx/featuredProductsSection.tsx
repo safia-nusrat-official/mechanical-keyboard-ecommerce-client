@@ -22,9 +22,9 @@ const FeaturedProductsSection = () => {
   });
   const products: IProduct[] = isSuccess && data.data;
   return (
-    <section className="overflow-hidden h-[3200px] md:h-[1165px] relative">
+    <section className="overflow-hidden h-[3200px] md:h-[1240px] lg:h-[1165px] relative">
       <div className="section-bg-image h-full relative overflow-hidden ">
-        <img src={sectionBg} alt="" className="w-full h-full" />
+        <img src={sectionBg} alt="" className="w-full h-full object-left" />
       </div>
       <div className="section-contents w-full text-center absolute p-8 md:p-20 top-1">
         <SectionHeading
@@ -40,26 +40,23 @@ const FeaturedProductsSection = () => {
         >
           Explore our top-selling keyboards that customers love.
         </p>
-        {/* <Swiper
-          spaceBetween={14}
-          slidesPerView={3}
-          onSlideChange={() => console.log("slide change")}
-          pagination={true}
-          modules={[Navigation, Pagination]}
-          navigation={true}
-          className="w-full px-10"
-        >
+        <div className="hidden md:grid-cols-2 md:grid lg:hidden gap-6">
           {products.length &&
-            products.map((product, index) => (
-              <SwiperSlide
+            products.slice(0, 4).map((product) => (
+              <ProductCard
+                data={product}
                 key={product._id}
-                // className={index === 0 ? "ml-14" : ""}
-              >
-                <ProductCard data={product}></ProductCard>
-              </SwiperSlide>
+                variant="md"
+              ></ProductCard>
             ))}
-        </Swiper> */}
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+          {isLoading &&
+            Array(4).map(() => (
+              <Card>
+                <Skeleton active></Skeleton>
+              </Card>
+            ))}
+        </div> 
+        <div className="grid lg:grid-cols-3 md:hidden lg:grid grid-cols-1 gap-6">
           {products.length &&
             products.map((product) => (
               <ProductCard
@@ -75,6 +72,7 @@ const FeaturedProductsSection = () => {
               </Card>
             ))}
         </div>
+
         <div className="overlay absolute bottom-0 left-0 w-full md:h-1/3 bg-gradient-to-t from-custom-primary to-transparent"></div>
         <Link to="/products">
           <CustomButton text={"Browse All Products"}></CustomButton>

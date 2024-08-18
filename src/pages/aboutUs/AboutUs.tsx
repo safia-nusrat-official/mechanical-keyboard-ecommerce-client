@@ -66,8 +66,8 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-14 m-8 md:m-20">
-        <article className="flex flex-col justify-between">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-14 m-8 md:m-20">
+        <article className="flex flex-col justify-between gap-12">
           <div data-aos="fade-down" data-aos-delay="100">
             <h3 className="text-3xl font-semibold">Our Story</h3>
             <p className="text-zinc-600 mt-2">
@@ -143,11 +143,11 @@ const AboutUs = () => {
       >
         <div
           className="
-           bg-[#0000007d] backdrop-blur-sm text-[#ffffffe0] md:py-36 px-8 md:px-20 py-10"
+           bg-[#0000007d] backdrop-blur-sm text-[#ffffffe0] lg:py-36 px-8 md:px-12 lg:px-20 py-10"
         >
           <BiSolidQuoteSingleLeft className="md:text-8xl text-6xl relative" />
           <h3
-            className="text-2xl max-w-[700px] relative md:left-20 left-0 font-serif top-0 md:-top-8 text-center font-medium"
+            className="text-2xl lg:max-w-[700px] md:max-w-[500px] relative md:left-20 left-0 font-serif top-0 md:-top-8 text-center font-medium"
             data-aos="zoom-out"
             data-aos-animation-duration="4000"
           >
@@ -156,7 +156,7 @@ const AboutUs = () => {
             us. What started as a search for the perfect keystroke became a
             mission to bring the joy of mechanical keyboards to everyone.
           </h3>
-          <BiSolidQuoteSingleLeft className="text-6xl md:text-8xl float-right -top-8 md:-top-28 left-0 md:-left-20 relative rotate-180" />
+          <BiSolidQuoteSingleLeft className="text-6xl md:text-8xl float-right -top-8 lg:-top-28 md:-top-16 left-0 lg:-left-20 md:-left-8 relative rotate-180" />
           <div className="text-center md:mt-0 mt-12" data-aos="fade-down">
             <i>- Ethan Matthews, Founder and CEO</i>
           </div>

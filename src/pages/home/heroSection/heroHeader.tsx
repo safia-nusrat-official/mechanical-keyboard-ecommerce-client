@@ -44,7 +44,7 @@ const HeroHeader = () => {
   }, []);
 
   return (
-    <h1 className="md:text-8xl text-4xl font-[600] md:font-[700] h-fit md:h-[300px]">
+    <h1 className="lg:text-8xl md:text-6xl text-4xl font-[600] md:font-[700] h-fit md:h-[200px] lg:h-[300px]">
       <span className={currentLineIndex === 0 ? "typing-effect" : ""}>
         {displayedText[0]}
       </span>

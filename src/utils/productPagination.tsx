@@ -21,7 +21,6 @@ const ProductPagination = ({
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   const numberOfPages = Math.ceil(numberOfProducts / productsPerPage);
-  console.log(numberOfPages);
   const paginationLinks = Array(numberOfPages)
     .fill(1)
     .map((item, index) => (

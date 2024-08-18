@@ -7,7 +7,7 @@ AOS.init();
 
 const HeroSection = () => {
   return (
-    <section className="hero-section relative md:h-[580px] h-[400px]  text-[#fefefe] md:overflow-hidden overflow-visible">
+    <section className="hero-section relative lg:h-[580px] md:h-[500px] h-[400px]  text-[#fefefe] md:overflow-hidden overflow-visible">
       <div className="hero-image-container h-full relative ">
         <div className="overlay absolute bg-[#00000048] backdrop-blur-[2px] z-1 h-full w-full"></div>
         <img

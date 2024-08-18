@@ -77,7 +77,9 @@ const AllProducts = () => {
           <div className="flex md:flex-row flex-col justify-between gap-2">
             <div className="sort flex justify-between items-center font-medium">
               <BsSortDown className="text-xl md:mr-2 mr-0"></BsSortDown>
-              <span className="md:mr-4 text-xs whitespace-break-spaces mr-0 md:text-xl">Sort By:</span>
+              <span className="md:mr-4 text-xs whitespace-break-spaces mr-0 md:text-xl">
+                Sort By:
+              </span>
               <Select
                 defaultValue="title"
                 style={{ width: 120 }}
@@ -123,7 +125,7 @@ const AllProducts = () => {
           )}
         </div>
 
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
           {isLoading &&
             Array(productsPerPage)
               .fill("item loading")
@@ -137,7 +139,7 @@ const AllProducts = () => {
                         marginBottom: 16,
                         height: "150px",
                         width: "100%",
-                        borderRadius:"1.5rem"
+                        borderRadius: "1.5rem",
                       }}
                       active
                     />

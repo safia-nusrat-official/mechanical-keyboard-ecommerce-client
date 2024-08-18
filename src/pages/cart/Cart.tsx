@@ -22,22 +22,26 @@ const Cart = () => {
   return (
     <section className="md:p-14 relative p-8 font-Untitled-Sans">
       {/* <DataTableDemo></DataTableDemo> */}
-      
+
       {cartItems.length > 0 && (
         <div className="">
-          <Card className="md:hidden block">
+          <Card className="lg:hidden flex flex-col md:flex-row justify-between md:items-center items-stretch">
             <CardHeader className="pb-2">
               <CardDescription>Total Price</CardDescription>
               <CardTitle className="text-4xl">
                 ${totalPrice.toFixed(2)}
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-xs text-muted-foreground">
+            <CardContent className="md:p-0">
+              <div className="text-xs block md:hidden text-muted-foreground">
                 Total {totalItems} items in cart
               </div>
+              <CardHeader className="hidden md:block pb-2">
+                <CardDescription>Total Items</CardDescription>
+                <CardTitle className="text-4xl">{totalItems}</CardTitle>
+              </CardHeader>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="md:p-0 md:pr-6">
               <Button
                 disabled={
                   cartItems.filter(
@@ -67,7 +71,7 @@ const Cart = () => {
             ))}
           </Table>
 
-          <Card className="fixed md:block hidden md:bottom-7 md:right-7 shadow-2xl">
+          <Card className="fixed lg:block hidden md:bottom-7 md:right-7 shadow-2xl">
             <CardHeader className="pb-2">
               <CardDescription>Total Price</CardDescription>
               <CardTitle className="text-4xl">
